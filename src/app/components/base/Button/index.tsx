@@ -19,7 +19,7 @@ export default function Button({
 }>) {
   return (
     <button
-      className="flex items-center gap-2 px-4 py-2 rounded-md cursor-pointer"
+      className="flex items-center gap-2 px-4 py-2 rounded-md outline-none cursor-pointer"
       type={type}
       onClick={onClick}
     >
