@@ -1,6 +1,8 @@
+import Wrapper from './components/container/Wrapper';
+
 export default function Home() {
   return (
-    <main>
+    <Wrapper as="main">
       <h1>Boas vindas!</h1>
       <h2>Você está no Art Explorer</h2>
       <ul>
@@ -9,6 +11,6 @@ export default function Home() {
         <li>art3</li>
         <li></li>
       </ul>
-    </main>
+    </Wrapper>
   );
 }
