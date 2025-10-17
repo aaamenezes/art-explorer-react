@@ -1,3 +1,4 @@
+import Link from '../../base/Link';
 import Logo from '../../base/Logo';
 import { Star } from 'lucide-react';
 
@@ -8,9 +9,10 @@ export default function PageHeader() {
         <Logo />
       </Link>
       <span>busca</span>
-      <button>
-        <Star /> <span>favoritar</span>
-      </button>
+      <Link href="/favorites">
+        <Star />
+        Favoritos
+      </Link>
     </header>
   );
 }
