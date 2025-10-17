@@ -1,4 +1,4 @@
-import Wrapper from './components/container/Wrapper';
+import Wrapper from '../components/container/Wrapper';
 
 export default function Home() {
   return (
