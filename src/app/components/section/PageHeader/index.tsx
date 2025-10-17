@@ -5,7 +5,7 @@ import Search from '../../block/Search';
 
 export default function PageHeader() {
   return (
-    <header className="flex justify-between items-center container mx-auto p-4">
+    <header className="flex justify-between items-center container mx-auto p-4 border-b-1 border-b-gray-300 dark:border-b-gray-600">
       <Link href="/">
         <Logo />
       </Link>
