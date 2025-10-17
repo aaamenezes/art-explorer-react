@@ -6,5 +6,5 @@ export default function Wrapper({
 }: PropsWithChildren<{
   as?: keyof HTMLElementTagNameMap;
 }>) {
-  return <Tag className={`container mx-auto p-4`}>{children}</Tag>;
+  return <Tag className="container mx-auto p-4">{children}</Tag>;
 }
