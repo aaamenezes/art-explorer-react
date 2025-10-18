@@ -10,10 +10,7 @@ export default function ArtCard() {
   return (
     <article className="relative rounded-md overflow-hidden bg-neutral-100 dark:bg-neutral-900">
       <Link href="#" className="group">
-        <Figure
-          figcaption="lorem ipsum dolor sit amet consectetur adipisicing"
-          figcaptionUrl="#"
-        >
+        <Figure figcaption="lorem ipsum dolor sit amet consectetur adipisicing">
           {/* <Image src={ArtCard.primaryImageSmall} alt="Artista" /> */}
           <div className="overflow-hidden">
             <Image
