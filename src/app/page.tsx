@@ -4,7 +4,7 @@ import Wrapper from '../components/container/Wrapper';
 import { getArtWorksByPage } from './lib/met-api';
 
 export default async function Home() {
-  const artworks = await getArtWorksByPage(3);
+  const artworks = await getArtWorksByPage('3');
 
   return (
     <Wrapper as="main">

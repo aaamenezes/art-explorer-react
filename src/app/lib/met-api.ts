@@ -8,13 +8,26 @@ async function getAllArtWorks() {
   return data;
 }
 
-export async function getArtWorksByPage(page: number) {
-  const artsPerPage = 15;
+export async function getArtWorksByPage(page: string) {
+  const pageNumber = Number(page);
+  if (Number.isNaN(pageNumber)) return [];
+
+  const ARTS_PER_PAGE = 15;
 
   const allArtworks = await getAllArtWorks();
-  const startIndex = (page - 1) * artsPerPage;
-  const endIndex = startIndex + artsPerPage;
+  const startIndex = (Number(page) - 1) * ARTS_PER_PAGE;
+  const endIndex = startIndex + ARTS_PER_PAGE;
   const artWorksToShow = allArtworks.objectIDs.slice(startIndex, endIndex);
 
   return artWorksToShow;
+}
+
+export async function getArtWorkById(objectId: string) {
+  const response = await fetch(
+    `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectId}`
+  );
+
+  const data = await response.json();
+
+  return data;
 }
