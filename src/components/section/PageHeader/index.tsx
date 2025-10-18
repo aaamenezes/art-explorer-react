@@ -10,7 +10,7 @@ export default function PageHeader() {
         <Logo />
       </Link>
       <Search />
-      <Link href="/favorites">
+      <Link href="/favorites" className="flex items-center gap-2 px-4 py-2">
         <Star />
         Favoritos
       </Link>
