@@ -8,9 +8,12 @@ export default function ArtCard() {
   const currentArtIsFavorited = false;
 
   return (
-    <article className="relative rounded-md overflow-hidden bg-neutral-100 dark:bg-neutral-900 group">
-      <Link href="#" className="flex flex-col gap-1 ">
-        <Figure figcaption="lorem ipsum dolor sit amet consectetur adipisicing">
+    <article className="relative rounded-md overflow-hidden bg-neutral-100 dark:bg-neutral-900">
+      <Link href="#" className="group">
+        <Figure
+          figcaption="lorem ipsum dolor sit amet consectetur adipisicing"
+          figcaptionUrl="#"
+        >
           {/* <Image src={ArtCard.primaryImageSmall} alt="Artista" /> */}
           <div className="overflow-hidden">
             <Image
@@ -20,11 +23,11 @@ export default function ArtCard() {
             />
           </div>
         </Figure>
-        <div className="flex justify-between gap-1 px-2 pb-2 text-sm text-gray-400 dark:text-gray-500">
-          <p>artistDisplayName</p>
-          <p>objectDate</p>
-        </div>
       </Link>
+      <div className="flex justify-between gap-1 px-2 pb-2 text-sm text-gray-400 dark:text-gray-500">
+        <p>artistDisplayName</p>
+        <p>objectDate</p>
+      </div>
       <Button className="absolute top-1 right-1 bg-white/40 hover:bg-white dark:bg-black/40 dark:hover:bg-black transition">
         <Star className={currentArtIsFavorited ? 'fill-current' : ''} />
       </Button>
