@@ -1,4 +1,6 @@
-export default function Input({ placeholder }: { placeholder?: string }) {
+import { InputProps } from './types';
+
+export default function Input({ placeholder }: InputProps) {
   return (
     <input
       type="text"

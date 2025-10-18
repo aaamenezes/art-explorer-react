@@ -1,10 +1,5 @@
-import { PropsWithChildren } from 'react';
+import { WrapperProps } from './types';
 
-export default function Wrapper({
-  children,
-  as: Tag = 'div',
-}: PropsWithChildren<{
-  as?: keyof HTMLElementTagNameMap;
-}>) {
+export default function Wrapper({ children, as: Tag = 'div' }: WrapperProps) {
   return <Tag className="container mx-auto p-4">{children}</Tag>;
 }

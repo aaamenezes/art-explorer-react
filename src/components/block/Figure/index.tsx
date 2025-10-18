@@ -1,9 +1,6 @@
-import { PropsWithChildren } from 'react';
+import { FigureProps } from './types';
 
-export default function Figure({
-  children,
-  figcaption,
-}: PropsWithChildren<{ figcaption: string }>) {
+export default function Figure({ children, figcaption }: FigureProps) {
   return (
     <figure className="flex flex-col gap-1">
       {children}

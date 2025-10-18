@@ -1,24 +1,12 @@
-import { LucideProps } from 'lucide-react';
-import {
-  ForwardRefExoticComponent,
-  PropsWithChildren,
-  RefAttributes,
-} from 'react';
+import { ButtonProps } from './types';
 
 export default function Button({
-  onClick,
   children,
+  onClick,
   type = 'button',
   className = '',
   StartIcon,
-}: PropsWithChildren<{
-  onClick?: () => void;
-  type?: 'button' | 'submit' | 'reset';
-  className?: string;
-  StartIcon?: ForwardRefExoticComponent<
-    Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>
-  >;
-}>) {
+}: ButtonProps) {
   return (
     <button
       className={`flex items-center gap-2 p-2 rounded-md outline-none cursor-pointer ${className}`}
