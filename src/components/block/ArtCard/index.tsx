@@ -25,7 +25,11 @@ export default function ArtCard() {
         </Figure>
       </Link>
       <div className="flex justify-between gap-1 px-2 pb-2 text-sm text-gray-400 dark:text-gray-500">
-        <p>artistDisplayName</p>
+        <p>
+          <Link href="#" className="hover:underline">
+            artistDisplayName
+          </Link>
+        </p>
         <p>objectDate</p>
       </div>
       <Button className="absolute top-1 right-1 bg-white/40 hover:bg-white dark:bg-black/40 dark:hover:bg-black transition">
