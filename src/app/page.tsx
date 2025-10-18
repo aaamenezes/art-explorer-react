@@ -1,6 +1,6 @@
-import ArtCard from '@/components/block/ArtCard';
+import ArtWorkCard from '@/components/block/ArtWorkCard';
 import Grid from '@/components/container/Grid';
-import Wrapper from '../components/container/Wrapper';
+import Wrapper from '@/components/container/Wrapper';
 import { getArtWorksByPage } from './lib/met-api';
 
 export default async function Home() {
@@ -15,7 +15,7 @@ export default async function Home() {
         {artworks.map((id: number) => (
           <p>{id}</p>
         ))}
-        <ArtCard objectID={418425} />
+        <ArtWorkCard objectID={418425} />
       </Grid>
     </Wrapper>
   );

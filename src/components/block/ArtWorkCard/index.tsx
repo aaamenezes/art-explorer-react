@@ -4,12 +4,12 @@ import Link from '@/components/base/Link';
 import Figure from '@/components/block/Figure';
 import { Star } from 'lucide-react';
 
-export default function ArtCard() {
+export default function ArtWorkCard() {
   const currentArtIsFavorited = false;
 
   return (
     <article className="relative rounded-md overflow-hidden bg-neutral-100 dark:bg-neutral-900">
-      <Link href="#" className="group">
+      <Link href="primaryImageSmall" className="group">
         <Figure figcaption="lorem ipsum dolor sit amet consectetur adipisicing">
           {/* <Image src={ArtCard.primaryImageSmall} alt="Artista" /> */}
           <div className="overflow-hidden">
