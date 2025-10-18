@@ -21,7 +21,7 @@ export default function ArtCard() {
           </div>
         </Figure>
       </Link>
-      <div className="flex justify-between gap-1 px-2 pb-2 text-sm text-gray-400 dark:text-gray-500">
+      <div className="flex justify-between gap-1 px-4 pb-4 text-sm text-gray-400 dark:text-gray-500">
         <p>
           <Link href="#" className="hover:underline">
             artistDisplayName
