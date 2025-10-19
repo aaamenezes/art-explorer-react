@@ -1,11 +1,11 @@
 'use client';
 
-import { buildArtWorkAltText } from '@/app/lib/buildArtWorkAltText';
+import { buildArtWorkAltText } from '@/lib/buildArtWorkAltText';
 import {
   addArtWorkToFavorites,
   isArtWorkAlreadyFavorited,
   removeArtWorkFromFavorites,
-} from '@/app/lib/favorites';
+} from '@/lib/favorites';
 import Button from '@/components/base/Button';
 import Image from '@/components/base/Image';
 import Link from '@/components/base/Link';

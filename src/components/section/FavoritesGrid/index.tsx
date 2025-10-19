@@ -1,6 +1,6 @@
 'use client';
 
-import { getFavoritesArtWorks } from '@/app/lib/favorites';
+import { getFavoritesArtWorks } from '@/lib/favorites';
 import ArtWorkCard from '@/components/block/ArtWorkCard';
 import Grid from '@/components/container/Grid';
 
