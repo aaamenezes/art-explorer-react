@@ -17,10 +17,10 @@ export async function getArtWorksByPage(page: string) {
 
   const ARTS_PER_PAGE = 15;
 
-  const allArtworks = await getAllArtWorks();
+  const allArtWorks = await getAllArtWorks();
   const startIndex = (Number(page) - 1) * ARTS_PER_PAGE;
   const endIndex = startIndex + ARTS_PER_PAGE;
-  const artWorksIds = allArtworks.objectIDs
+  const artWorksIds = allArtWorks.objectIDs
     .slice(startIndex, endIndex)
     .map(objectId => objectId.toString());
 
