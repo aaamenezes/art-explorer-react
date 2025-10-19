@@ -1,9 +1,25 @@
+interface MetApiAllArtWorksResponse {
+  total: number;
+  objectIDs: number[];
+}
+
+interface ArtWorkProps {
+  title: string;
+  primaryImage: string;
+  primaryImageSmall: string;
+  artistDisplayName: string;
+  objectDate: string;
+  medium: string;
+  department: string;
+  objectURL: string;
+}
+
 async function getAllArtWorks() {
   const response = await fetch(
     'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=painting'
   );
 
-  const data = await response.json();
+  const data: MetApiAllArtWorksResponse = await response.json();
 
   return data;
 }
@@ -27,7 +43,7 @@ export async function getArtWorkById(objectId: string) {
     `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectId}`
   );
 
-  const data = await response.json();
+  const data: ArtWorkProps = await response.json();
 
   return data;
 }
