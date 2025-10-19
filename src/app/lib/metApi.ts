@@ -8,7 +8,7 @@ async function getAllArtWorks() {
   return data;
 }
 
-export async function getArtWorksByPage(page: string) {
+export async function getArtWorksIdsByPage(page: string) {
   const pageNumber = Number(page);
   if (Number.isNaN(pageNumber)) return [];
 
@@ -17,9 +17,9 @@ export async function getArtWorksByPage(page: string) {
   const allArtworks = await getAllArtWorks();
   const startIndex = (Number(page) - 1) * ARTS_PER_PAGE;
   const endIndex = startIndex + ARTS_PER_PAGE;
-  const artWorksToShow = allArtworks.objectIDs.slice(startIndex, endIndex);
+  const artWorksIds = allArtworks.objectIDs.slice(startIndex, endIndex);
 
-  return artWorksToShow;
+  return artWorksIds;
 }
 
 export async function getArtWorkById(objectId: string) {

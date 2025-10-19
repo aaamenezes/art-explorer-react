@@ -1,10 +1,10 @@
 import ArtWorkCard from '@/components/block/ArtWorkCard';
 import Grid from '@/components/container/Grid';
 import Wrapper from '@/components/container/Wrapper';
-import { getArtWorksByPage } from './lib/metApi';
+import { getArtWorksIdsByPage } from './lib/metApi';
 
 export default async function Home() {
-  const artworks = await getArtWorksByPage('3');
+  const artworks = await getArtWorksIdsByPage('3');
 
   return (
     <Wrapper as="main">
