@@ -1,18 +1,5 @@
-interface MetApiAllArtWorksResponse {
-  total: number;
-  objectIDs: number[];
-}
-
-interface ArtWorkProps {
-  title: string;
-  primaryImage: string;
-  primaryImageSmall: string;
-  artistDisplayName: string;
-  objectDate: string;
-  medium: string;
-  department: string;
-  objectURL: string;
-}
+import { ArtWorkProps } from '@/types/artwork';
+import { MetApiAllArtWorksResponse } from '@/types/metApi';
 
 async function getAllArtWorks() {
   const response = await fetch(
