@@ -3,6 +3,8 @@ export interface ArtWorkProps {
   primaryImage: string;
   primaryImageSmall: string;
   artistDisplayName: string;
+  artistDisplayBio: string;
+  culture: string;
   objectDate: string;
   medium: string;
   department: string;
