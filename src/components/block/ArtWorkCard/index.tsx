@@ -30,6 +30,8 @@ export default function ArtWorkCard({ artWorkData }: ArtWorkCardProps) {
     setCurrentArtWorkIsFavorited(true);
   }, [currentArtWorkIsFavorited, artWorkData]);
 
+  const artistName = artWorkData.artistDisplayName.replace(/ /g, '+');
+
   return (
     <article className="relative rounded-md overflow-hidden bg-neutral-100 dark:bg-neutral-900">
       <Link href={`/artwork/${artWorkData.objectID}`} className="group">
@@ -45,7 +47,11 @@ export default function ArtWorkCard({ artWorkData }: ArtWorkCardProps) {
       </Link>
       <div className="flex justify-between gap-1 px-4 pb-4 text-sm text-gray-400 dark:text-gray-500">
         <p>
-          <Link href="#" className="hover:underline">
+          <Link
+            href={`https://www.metmuseum.org/art/collection/search?q=${artistName}&searchField=ArtistCulture`}
+            className="hover:underline"
+            external
+          >
             {artWorkData.artistDisplayName}
           </Link>
         </p>
