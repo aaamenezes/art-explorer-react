@@ -6,29 +6,9 @@ export async function getAllArtWorksIDs() {
     'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=painting'
   );
 
-  const data: MetApiAllArtWorksResponse = await response.json();
+  const allArtWorkIDs: MetApiAllArtWorksResponse = await response.json();
 
-  return data;
-}
-
-export async function getArtWorksByPage(page: string) {
-  const pageNumber = Number(page);
-  if (Number.isNaN(pageNumber)) return [];
-
-  const ARTS_PER_PAGE = 15;
-
-  const allArtWorks = await getAllArtWorksIDs();
-  const startIndex = (Number(page) - 1) * ARTS_PER_PAGE;
-  const endIndex = startIndex + ARTS_PER_PAGE;
-  const artWorksIDs = allArtWorks.objectIDs
-    .slice(startIndex, endIndex)
-    .map(objectId => objectId.toString());
-
-  const artWorksPromises = artWorksIDs.map(getArtWorkById);
-
-  const artWorks = await Promise.all(artWorksPromises);
-
-  return artWorks;
+  return allArtWorkIDs;
 }
 
 export async function getArtWorkById(objectId: string) {
@@ -36,7 +16,7 @@ export async function getArtWorkById(objectId: string) {
     `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectId}`
   );
 
-  const data: ArtWorkProps = await response.json();
+  const artWorkData: ArtWorkProps = await response.json();
 
-  return data;
+  return artWorkData;
 }
