@@ -1,5 +1,5 @@
 import { buildArtWorkAltText } from '@/app/lib/buildArtWorkAltText';
-import { getArtWorkById } from '@/app/lib/met-api';
+import { getArtWorkById } from '@/app/lib/metApi';
 import Image from '@/components/base/Image';
 import Link from '@/components/base/Link';
 import Wrapper from '@/components/container/Wrapper';
