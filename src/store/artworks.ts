@@ -1,26 +1,50 @@
-import { getArtWorksByPage } from '@/lib/metApi';
+import { getAllArtWorksIDs, getArtWorkById } from '@/lib/metApi';
 import { ArtWorksPaginationState } from '@/types/artwork';
 import { create } from 'zustand';
 
 export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
-  artworks: [],
-  page: 1,
+  allArtWorksIDs: [],
+  artWorksData: [],
+  currentPage: 1,
   loading: false,
   error: null,
   hasMore: true,
-
-  loadArtworks: async () => {
-    const { page, loading, artworks } = get();
+  loadAllArtWorksIDsFromApi: async () => {
+    const { loading } = get();
     if (loading) return;
 
     try {
       set({ loading: true, error: null });
-      const newArtworks = await getArtWorksByPage(page.toString());
+      const artworks = await getAllArtWorksIDs();
+
+      set({ allArtWorksIDs: artworks?.objectIDs || [] });
+    } catch (error) {
+      set({ error: `Falha ao carregar obras. ${error}` });
+    } finally {
+      set({ loading: false });
+    }
+  },
+  loadArtWorksByPage: async (nextPage: number) => {
+    const { allArtWorksIDs, artWorksData, loading } = get();
+    if (loading) return;
+
+    try {
+      set({ loading: true, error: null });
+
+      const ARTS_PER_PAGE = 15;
+
+      const startIndex = (Number(nextPage) - 1) * ARTS_PER_PAGE;
+      const endIndex = startIndex + ARTS_PER_PAGE;
+      const artWorksIDs = allArtWorksIDs
+        .slice(startIndex, endIndex)
+        .map(objectId => objectId.toString());
+
+      const artWorksPromises = artWorksIDs.map(getArtWorkById);
+      const newArtWorks = await Promise.all(artWorksPromises);
 
       set({
-        artworks: [...artworks, ...newArtworks],
-        page: page + 1,
-        hasMore: newArtworks.length === 15,
+        artWorksData: [...artWorksData, ...newArtWorks],
+        currentPage: nextPage,
       });
     } catch (error) {
       set({ error: `Falha ao carregar obras. ${error}` });
@@ -28,6 +52,4 @@ export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
       set({ loading: false });
     }
   },
-
-  reset: () => set({ artworks: [], page: 1, hasMore: true }),
 }));

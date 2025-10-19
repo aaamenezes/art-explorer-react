@@ -1,3 +1,5 @@
+import { MetApiAllArtWorksResponse } from './metApi';
+
 export interface ArtWorkProps {
   objectID: number;
   title: string;
@@ -13,11 +15,12 @@ export interface ArtWorkProps {
 }
 
 export interface ArtWorksPaginationState {
-  artworks: ArtWorkProps[];
-  page: number;
+  allArtWorksIDs: MetApiAllArtWorksResponse['objectIDs'];
+  artWorksData: ArtWorkProps[];
+  currentPage: number;
   loading: boolean;
   error: string | null;
   hasMore: boolean;
-  loadArtworks: () => Promise<void>;
-  reset: () => void;
+  loadAllArtWorksIDsFromApi: () => Promise<void>;
+  loadArtWorksByPage: (page: number) => Promise<void>;
 }

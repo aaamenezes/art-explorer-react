@@ -1,7 +1,7 @@
 import { ArtWorkProps } from '@/types/artwork';
 import { MetApiAllArtWorksResponse } from '@/types/metApi';
 
-async function getAllArtWorks() {
+export async function getAllArtWorksIDs() {
   const response = await fetch(
     'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=painting'
   );
@@ -17,14 +17,14 @@ export async function getArtWorksByPage(page: string) {
 
   const ARTS_PER_PAGE = 15;
 
-  const allArtWorks = await getAllArtWorks();
+  const allArtWorks = await getAllArtWorksIDs();
   const startIndex = (Number(page) - 1) * ARTS_PER_PAGE;
   const endIndex = startIndex + ARTS_PER_PAGE;
-  const artWorksIds = allArtWorks.objectIDs
+  const artWorksIDs = allArtWorks.objectIDs
     .slice(startIndex, endIndex)
     .map(objectId => objectId.toString());
 
-  const artWorksPromises = artWorksIds.map(getArtWorkById);
+  const artWorksPromises = artWorksIDs.map(getArtWorkById);
 
   const artWorks = await Promise.all(artWorksPromises);
 
