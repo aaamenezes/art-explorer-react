@@ -11,3 +11,13 @@ export interface ArtWorkProps {
   department: string;
   objectURL: string;
 }
+
+export interface ArtWorksPaginationState {
+  artworks: ArtWorkProps[];
+  page: number;
+  loading: boolean;
+  error: string | null;
+  hasMore: boolean;
+  loadArtworks: () => Promise<void>;
+  reset: () => void;
+}
