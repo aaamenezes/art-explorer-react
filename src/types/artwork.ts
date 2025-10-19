@@ -1,4 +1,5 @@
 export interface ArtWorkProps {
+  objectID: number;
   title: string;
   primaryImage: string;
   primaryImageSmall: string;

@@ -1,10 +1,10 @@
 import ArtWorkCard from '@/components/block/ArtWorkCard';
 import Grid from '@/components/container/Grid';
 import Wrapper from '@/components/container/Wrapper';
-import { getArtWorksIdsByPage } from './lib/metApi';
+import { getArtWorksByPage } from './lib/metApi';
 
 export default async function Home() {
-  const artworks = await getArtWorksIdsByPage('3');
+  const artworks = await getArtWorksByPage('3');
 
   return (
     <Wrapper as="main">
@@ -12,10 +12,10 @@ export default async function Home() {
         Veja as obras do Metropolitan Museum of Art
       </h1>
       <Grid>
-        {artworks.map((id: number) => (
-          <p>{id}</p>
-        ))}
-        <ArtWorkCard objectID={418425} />
+        {artworks.map(artWork => {
+          if (!artWork.primaryImageSmall) return null;
+          return <ArtWorkCard key={artWork.objectID} artWorkData={artWork} />;
+        })}
       </Grid>
     </Wrapper>
   );
