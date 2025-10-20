@@ -1,9 +1,9 @@
 import { ArtWorkProps } from '@/types/artwork';
 import { MetApiAllArtWorksResponse } from '@/types/metApi';
 
-export async function getAllArtWorksIDs() {
+export async function getAllArtWorksIDs(searchKeyword: string) {
   const response = await fetch(
-    'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=painting'
+    `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=${searchKeyword}`
   );
 
   const allArtWorkIDs: MetApiAllArtWorksResponse = await response.json();

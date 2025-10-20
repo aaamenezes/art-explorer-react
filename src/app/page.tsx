@@ -25,7 +25,7 @@ export default function Home() {
 
   useEffect(() => {
     if (allArtWorksIDs.length === 0)
-      loadAllArtWorksIDsFromApi().then(() => {
+      loadAllArtWorksIDsFromApi('painting').then(() => {
         loadArtWorksByPage(1);
       });
   }, [allArtWorksIDs.length, loadAllArtWorksIDsFromApi, loadArtWorksByPage]);

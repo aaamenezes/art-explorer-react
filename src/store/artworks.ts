@@ -9,13 +9,18 @@ export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
   loading: false,
   error: null,
   hasMore: true,
-  loadAllArtWorksIDsFromApi: async () => {
+  loadAllArtWorksIDsFromApi: async (searchKeyword: string) => {
+    if (searchKeyword.trim() === '') {
+      set({ allArtWorksIDs: [], artWorksData: [], hasMore: false });
+      return;
+    }
+
     const { loading } = get();
     if (loading) return;
 
     try {
       set({ loading: true, error: null });
-      const artworks = await getAllArtWorksIDs();
+      const artworks = await getAllArtWorksIDs(searchKeyword);
 
       set({ allArtWorksIDs: artworks?.objectIDs || [] });
     } catch (error) {
@@ -42,8 +47,12 @@ export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
       const artWorksPromises = artWorksIDs.map(getArtWorkById);
       const newArtWorks = await Promise.all(artWorksPromises);
 
+      const isNewSearch = nextPage === 1;
+
       set({
-        artWorksData: [...artWorksData, ...newArtWorks],
+        artWorksData: isNewSearch
+          ? newArtWorks
+          : [...artWorksData, ...newArtWorks],
         currentPage: nextPage,
       });
     } catch (error) {

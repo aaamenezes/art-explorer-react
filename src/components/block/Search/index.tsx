@@ -2,6 +2,7 @@
 
 import Button from '@/components/base/Button';
 import Input from '@/components/base/Input';
+import { useArtworkStore } from '@/store/artworks';
 import { Search as SearchIcon } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useState } from 'react';
@@ -9,31 +10,38 @@ import { useCallback, useState } from 'react';
 export default function Search() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [searchKeyWord, setSearchKeyWord] = useState('');
+  const [searchKeyword, setSearchKeyword] = useState('');
+
+  const { loadAllArtWorksIDsFromApi, loadArtWorksByPage } = useArtworkStore();
 
   const handleSubmit = useCallback(
     (e: React.FormEvent) => {
       e.preventDefault();
 
-      /* UPDATE QUERY PARAMS */
       const params = new URLSearchParams(searchParams.toString());
 
-      if (searchKeyWord.trim() === '') {
+      if (searchKeyword.trim() === '') {
         params.delete('q');
       } else {
-        params.set('q', searchKeyWord);
+        params.set('q', searchKeyword);
       }
       router.push(`?${params.toString()}`);
 
-      /* puxar IDs dessa busca da API com o novo termo de busca */
-
-      /* quando terminar usar .then() para disparar a busca dos dados dos primeiros 15 IDs recebidos */
+      loadAllArtWorksIDsFromApi(searchKeyword).then(() => {
+        loadArtWorksByPage(1);
+      });
     },
-    [searchKeyWord, router, searchParams]
+    [
+      searchKeyword,
+      router,
+      searchParams,
+      loadAllArtWorksIDsFromApi,
+      loadArtWorksByPage,
+    ]
   );
 
   const handleChange = useCallback((value: string) => {
-    setSearchKeyWord(value);
+    setSearchKeyword(value);
   }, []);
 
   return (
@@ -42,7 +50,7 @@ export default function Search() {
       onSubmit={handleSubmit}
     >
       <Input
-        value={searchKeyWord}
+        value={searchKeyword}
         onChange={handleChange}
         placeholder="Buscar obra de arte"
       />

@@ -21,6 +21,6 @@ export interface ArtWorksPaginationState {
   loading: boolean;
   error: string | null;
   hasMore: boolean;
-  loadAllArtWorksIDsFromApi: () => Promise<void>;
+  loadAllArtWorksIDsFromApi: (keyWordSearch: string) => Promise<void>;
   loadArtWorksByPage: (page: number) => Promise<void>;
 }
