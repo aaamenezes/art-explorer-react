@@ -45,7 +45,9 @@ export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
         .map(objectId => objectId.toString());
 
       const artWorksPromises = artWorksIDs.map(getArtWorkById);
-      const newArtWorks = await Promise.all(artWorksPromises);
+      const newArtWorks = await Promise.all(artWorksPromises).then(results =>
+        results.filter(result => result !== null)
+      );
 
       const isNewSearch = nextPage === 1;
 

@@ -1,22 +1,50 @@
 import { ArtWorkProps } from '@/types/artwork';
-import { MetApiAllArtWorksResponse } from '@/types/metApi';
+import { MetApiAllArtWorksIDsResponse } from '@/types/metApi';
+import axios from 'axios';
+
+export const MET_API_BASE_URL =
+  'https://collectionapi.metmuseum.org/public/collection/v1';
+
+const requester = axios.create({
+  baseURL: MET_API_BASE_URL,
+});
+
+function handleRequestError<ReturnValueType = null>(
+  context: string,
+  error: unknown,
+  returnValue: ReturnValueType | null = null
+) {
+  console.error(`Error fetching ${context}:`, error);
+  return returnValue;
+}
 
 export async function getAllArtWorksIDs(searchKeyword: string) {
-  const response = await fetch(
-    `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=${searchKeyword}`
-  );
+  try {
+    const response = await requester.get<MetApiAllArtWorksIDsResponse>(
+      '/search',
+      {
+        params: {
+          hasImages: true,
+          q: searchKeyword,
+        },
+      }
+    );
 
-  const allArtWorkIDs: MetApiAllArtWorksResponse = await response.json();
-
-  return allArtWorkIDs;
+    return response.data;
+  } catch (error) {
+    return handleRequestError('art work IDs', error, {
+      total: 0,
+      objectIDs: [],
+    });
+  }
 }
 
 export async function getArtWorkById(objectId: string) {
-  const response = await fetch(
-    `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectId}`
-  );
+  try {
+    const response = await requester.get<ArtWorkProps>(`/objects/${objectId}`);
 
-  const artWorkData: ArtWorkProps = await response.json();
-
-  return artWorkData;
+    return response.data;
+  } catch (error) {
+    return handleRequestError(`art work by ID: "${objectId}"`, error);
+  }
 }

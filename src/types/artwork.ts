@@ -1,4 +1,4 @@
-import { MetApiAllArtWorksResponse } from './metApi';
+import { MetApiAllArtWorksIDsResponse } from './metApi';
 
 export interface ArtWorkProps {
   objectID: number;
@@ -15,7 +15,7 @@ export interface ArtWorkProps {
 }
 
 export interface ArtWorksPaginationState {
-  allArtWorksIDs: MetApiAllArtWorksResponse['objectIDs'];
+  allArtWorksIDs: MetApiAllArtWorksIDsResponse['objectIDs'];
   artWorksData: ArtWorkProps[];
   currentPage: number;
   loading: boolean;

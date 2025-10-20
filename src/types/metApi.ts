@@ -1,4 +1,4 @@
-export interface MetApiAllArtWorksResponse {
+export interface MetApiAllArtWorksIDsResponse {
   total: number;
   objectIDs: number[];
 }
