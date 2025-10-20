@@ -38,7 +38,7 @@ export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
 
       const ARTS_PER_PAGE = 15;
 
-      const startIndex = (Number(nextPage) - 1) * ARTS_PER_PAGE;
+      const startIndex = (nextPage - 1) * ARTS_PER_PAGE;
       const endIndex = startIndex + ARTS_PER_PAGE;
       const artWorksIDs = allArtWorksIDs
         .slice(startIndex, endIndex)
