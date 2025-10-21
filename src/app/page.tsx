@@ -1,13 +1,18 @@
 'use client';
 
 import Button from '@/components/base/Button';
+import Link from '@/components/base/Link';
 import ArtWorkCard from '@/components/block/ArtWorkCard';
 import Grid from '@/components/container/Grid';
 import Wrapper from '@/components/container/Wrapper';
 import { useArtworkStore } from '@/store/artworks';
+import { useDepartamentsStore } from '@/store/departments';
 import { useCallback, useEffect } from 'react';
 
 export default function Home() {
+  const { allDepartaments, loadAllDepartamentsFromApi } =
+    useDepartamentsStore();
+
   const {
     loading,
     hasMore,
@@ -30,11 +35,32 @@ export default function Home() {
       });
   }, [allArtWorksIDs.length, loadAllArtWorksIDsFromApi, loadArtWorksByPage]);
 
+  useEffect(() => {
+    loadAllDepartamentsFromApi();
+  }, [loadAllDepartamentsFromApi]);
+
   return (
     <Wrapper as="main">
-      <h1 className="text-2xl font-bold my-8">
-        Veja as obras do Metropolitan Museum of Art
-      </h1>
+      <div className="my-8">
+        <h1 className="text-3xl font-bold">
+          Veja as obras do Metropolitan Museum of Art
+        </h1>
+      </div>
+      <div className="my-8">
+        <h2 className="text-2xl font-bold mb-4">Principais departamentos</h2>
+        <ul className="flex flex-row gap-2 flex-wrap">
+          {allDepartaments.map(department => (
+            <li key={department.displayName}>
+              <Link
+                href="#"
+                className="inline-block p-2 border border-neutral-300 dark:border-neutral-700 rounded-xl text-sm hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+              >
+                {department.displayName}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
       <Grid>
         {artWorksData.map(artWork => {
           if (!artWork.primaryImageSmall) return null;
