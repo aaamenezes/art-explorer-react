@@ -9,7 +9,10 @@ export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
   loading: false,
   error: null,
   hasMore: true,
-  loadAllArtWorksIDsFromApi: async (searchKeyword: string) => {
+  loadAllArtWorksIDsFromApi: async (
+    searchKeyword: string,
+    departmentId?: number
+  ) => {
     if (searchKeyword.trim() === '') {
       set({ allArtWorksIDs: [], artWorksData: [], hasMore: false });
       return;
@@ -20,7 +23,7 @@ export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
 
     try {
       set({ loading: true, error: null });
-      const artworks = await getAllArtWorksIDs(searchKeyword);
+      const artworks = await getAllArtWorksIDs(searchKeyword, departmentId);
 
       set({ allArtWorksIDs: artworks?.objectIDs || [] });
     } catch (error) {

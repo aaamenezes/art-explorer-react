@@ -6,6 +6,7 @@ import Departments from '@/components/container/Departments';
 import Grid from '@/components/container/Grid';
 import Wrapper from '@/components/container/Wrapper';
 import { useArtworkStore } from '@/store/artworks';
+import { useSearchParams } from 'next/navigation';
 import { useCallback, useEffect } from 'react';
 
 export default function Home() {
