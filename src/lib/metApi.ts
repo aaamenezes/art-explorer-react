@@ -1,5 +1,8 @@
 import { ArtWorkProps } from '@/types/artwork';
-import { MetApiAllArtWorksIDsResponse } from '@/types/metApi';
+import {
+  MetApiAllArtWorksIDsResponse,
+  MetApiDepartmentsResponse,
+} from '@/types/metApi';
 import axios from 'axios';
 
 export const MET_API_BASE_URL =
@@ -46,5 +49,17 @@ export async function getArtWorkById(objectId: string) {
     return response.data;
   } catch (error) {
     return handleRequestError(`art work by ID: "${objectId}"`, error);
+  }
+}
+
+export async function getArtWorksDepartments() {
+  try {
+    const response = await requester.get<MetApiDepartmentsResponse>(
+      `/departments`
+    );
+
+    return response.data;
+  } catch (error) {
+    return handleRequestError('departments', error);
   }
 }
