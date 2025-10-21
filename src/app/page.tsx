@@ -9,6 +9,9 @@ import { useArtworkStore } from '@/store/artworks';
 import { useCallback, useEffect } from 'react';
 
 export default function Home() {
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams.toString());
+
   const {
     loading,
     hasMore,
@@ -34,11 +37,16 @@ export default function Home() {
   return (
     <Wrapper as="main">
       <div className="my-8">
-        <h1 className="text-3xl font-bold">
+        <h1 className="text-3xl font-bold mb-4">
           Veja as obras do Metropolitan Museum of Art
         </h1>
+        <p>
+          Use a caixa de busca no topo da tela para encontrar obras específicas.
+        </p>
       </div>
-      <Departments />
+
+      {params.has('q') && artWorksData.length > 0 && <Departments />}
+
       <Grid>
         {artWorksData.map(artWork => {
           if (!artWork.primaryImageSmall) return null;
