@@ -1,35 +1,14 @@
 import Button from '@/components/base/Button';
-import { useArtworkStore } from '@/store/artworks';
 import { useDepartamentsStore } from '@/store/departments';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import ArtistOrCulture from './ArtistOrCulture';
+import Departments from './Departments';
 
 export default function Filters() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
   const [open, setOpen] = useState(false);
 
   const { loading, allDepartaments, loadAllDepartamentsFromApi } =
     useDepartamentsStore();
-
-  const { loadAllArtWorksIDsFromApi, loadArtWorksByPage } = useArtworkStore();
-
-  const handleFilterDepartment = useCallback(
-    (departmentId: number) => {
-      const params = new URLSearchParams(searchParams.toString());
-      const paramQ = params.get('q');
-      if (!paramQ) return;
-
-      params.set('departmentId', departmentId.toString());
-      router.push(`?${params.toString()}`);
-
-      loadAllArtWorksIDsFromApi(paramQ, departmentId).then(() => {
-        loadArtWorksByPage(1);
-      });
-    },
-    [searchParams, router, loadAllArtWorksIDsFromApi, loadArtWorksByPage]
-  );
 
   useEffect(() => {
     loadAllDepartamentsFromApi();
@@ -58,24 +37,12 @@ export default function Filters() {
       </div>
       <div
         className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          open ? 'max-h-40 opacity-100 mt-2' : 'max-h-0 opacity-0'
-        } bg-gray-50 dark:bg-gray-900 rounded-md`}
+          open ? 'max-h-800 md:max-h-500 opacity-100 mt-2' : 'max-h-0 opacity-0'
+        } border-b-1 border-b-gray-300 dark:border-b-gray-600 rounded-md`}
       >
         <div className="p-4">
-          <ul className="flex flex-row gap-2 flex-wrap">
-            {allDepartaments.map(department => (
-              <li key={department.displayName}>
-                <Button
-                  variant="secondary"
-                  onClick={() =>
-                    handleFilterDepartment(department.departmentId)
-                  }
-                >
-                  {department.displayName}
-                </Button>
-              </li>
-            ))}
-          </ul>
+          <Departments />
+          <ArtistOrCulture />
         </div>
       </div>
     </div>
