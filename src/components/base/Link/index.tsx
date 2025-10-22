@@ -5,7 +5,8 @@ export default function Link({
   children,
   href,
   external = false,
-  className,
+  className = '',
+  onClick = () => {},
 }: LinkProps) {
   return (
     <NextLink
@@ -13,6 +14,7 @@ export default function Link({
       target={external ? '_blank' : '_self'}
       rel={external ? 'noopener noreferrer' : undefined}
       className={className}
+      onClick={onClick}
     >
       {children}
     </NextLink>

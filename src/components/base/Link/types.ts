@@ -3,4 +3,5 @@ export interface LinkProps {
   href: string;
   external?: boolean;
   className?: string;
+  onClick?: () => void;
 }

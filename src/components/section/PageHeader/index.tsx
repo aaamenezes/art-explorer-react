@@ -1,12 +1,22 @@
-import Link from '../../base/Link';
-import Logo from '../../base/Logo';
+'use client';
+
+import Link from '@/components/base/Link';
+import Logo from '@/components/base/Logo';
+import Search from '@/components/block/Search';
+import { useArtworkStore } from '@/store/artworks';
 import { Star } from 'lucide-react';
-import Search from '../../block/Search';
+import { useCallback } from 'react';
 
 export default function PageHeader() {
+  const { reset } = useArtworkStore();
+
+  const handleClick = useCallback(() => {
+    reset();
+  }, [reset]);
+
   return (
     <header className="flex justify-between items-center container mx-auto p-4 border-b-1 border-b-gray-300 dark:border-b-gray-600">
-      <Link href="/">
+      <Link href="/" onClick={handleClick}>
         <Logo />
       </Link>
       <Search />

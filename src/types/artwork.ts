@@ -26,4 +26,5 @@ export interface ArtWorksPaginationState {
     departmentId?: number
   ) => Promise<void>;
   loadArtWorksByPage: (page: number) => Promise<void>;
+  reset: () => void;
 }

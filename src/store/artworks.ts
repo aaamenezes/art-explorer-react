@@ -67,4 +67,14 @@ export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
       set({ loading: false });
     }
   },
+  reset: () => {
+    set({
+      allArtWorksIDs: [],
+      artWorksData: [],
+      currentPage: 1,
+      loading: false,
+      error: null,
+      hasMore: true,
+    });
+  },
 }));
