@@ -7,6 +7,7 @@ export default function Button({
   type = 'button',
   className = '',
   StartIcon,
+  tabIndex,
 }: ButtonProps) {
   const variantsClasses = {
     primary:
@@ -19,6 +20,7 @@ export default function Button({
       className={`flex items-center gap-2 py-2 px-4 rounded-md outline-none cursor-pointer ${variantsClasses[variant]} ${className}`}
       type={type}
       onClick={onClick}
+      tabIndex={tabIndex}
     >
       {StartIcon && <StartIcon />}
       {children}

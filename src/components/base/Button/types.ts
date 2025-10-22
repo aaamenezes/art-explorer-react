@@ -10,4 +10,5 @@ export interface ButtonProps {
   StartIcon?: ForwardRefExoticComponent<
     Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>
   >;
+  tabIndex?: number;
 }
