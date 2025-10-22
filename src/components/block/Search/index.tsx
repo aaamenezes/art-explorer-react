@@ -25,6 +25,7 @@ export default function Search() {
       } else {
         params.set('q', searchKeyword);
       }
+      params.delete('departmentId');
       router.push(`?${params.toString()}`);
 
       loadAllArtWorksIDsFromApi(searchKeyword).then(() => {
