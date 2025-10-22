@@ -5,6 +5,7 @@ export default function Button({
   variant = 'primary',
   onClick,
   type = 'button',
+  className = '',
   StartIcon,
 }: ButtonProps) {
   const variantsClasses = {
@@ -15,7 +16,7 @@ export default function Button({
   };
   return (
     <button
-      className={`flex items-center gap-2 py-2 px-4 rounded-md outline-none cursor-pointer ${variantsClasses[variant]}`}
+      className={`flex items-center gap-2 py-2 px-4 rounded-md outline-none cursor-pointer ${variantsClasses[variant]} ${className}`}
       type={type}
       onClick={onClick}
     >

@@ -6,6 +6,7 @@ export interface ButtonProps {
   variant?: 'primary' | 'secondary';
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
+  className?: string;
   StartIcon?: ForwardRefExoticComponent<
     Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>
   >;
