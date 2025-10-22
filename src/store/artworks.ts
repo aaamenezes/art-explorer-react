@@ -37,7 +37,7 @@ export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
     if (loading) return;
 
     try {
-      set({ loading: true, error: null, hasMore: false });
+      set({ loading: true, error: null, hasMore: nextPage > 1 });
 
       const ARTS_PER_PAGE = 15;
 
