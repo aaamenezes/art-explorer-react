@@ -4,7 +4,7 @@ import { useDepartamentsStore } from '@/store/departments';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
-export default function Departments() {
+export default function Filters() {
   const router = useRouter();
   const searchParams = useSearchParams();
 

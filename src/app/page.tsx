@@ -2,7 +2,7 @@
 
 import ArtWorkCard from '@/components/block/ArtWorkCard';
 import NextPageButton from '@/components/block/NextPageButton';
-import Departments from '@/components/section/Departments';
+import Filters from '@/components/section/Filters';
 import Grid from '@/components/container/Grid';
 import Wrapper from '@/components/container/Wrapper';
 import { useArtworkStore } from '@/store/artworks';
@@ -28,7 +28,7 @@ export default function Home() {
         )}
       </div>
 
-      {params.has('q') && artWorksData.length > 0 && <Departments />}
+      {params.has('q') && artWorksData.length > 0 && <Filters />}
 
       <Grid>
         {artWorksData.map(artWork => {
