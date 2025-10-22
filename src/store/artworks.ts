@@ -14,7 +14,7 @@ export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
     departmentId?: number
   ) => {
     if (searchKeyword.trim() === '') {
-      set({ allArtWorksIDs: [], artWorksData: [], hasMore: false });
+      set({ allArtWorksIDs: [], artWorksData: [] });
       return;
     }
 
@@ -37,7 +37,7 @@ export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
     if (loading) return;
 
     try {
-      set({ loading: true, error: null });
+      set({ loading: true, error: null, hasMore: false });
 
       const ARTS_PER_PAGE = 15;
 
@@ -59,9 +59,10 @@ export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
           ? newArtWorks
           : [...artWorksData, ...newArtWorks],
         currentPage: nextPage,
+        hasMore: endIndex < allArtWorksIDs.length,
       });
     } catch (error) {
-      set({ error: `Falha ao carregar obras. ${error}` });
+      set({ error: `Falha ao carregar obras. ${error}`, hasMore: false });
     } finally {
       set({ loading: false });
     }
