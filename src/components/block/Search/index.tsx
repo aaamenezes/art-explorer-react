@@ -54,7 +54,7 @@ export default function Search() {
         onChange={handleChange}
         placeholder="Buscar obra de arte"
       />
-      <Button type="submit">
+      <Button variant="secondary" type="submit">
         <SearchIcon className="text-black dark:text-white" />
       </Button>
     </form>

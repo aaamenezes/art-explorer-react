@@ -11,10 +11,7 @@ export default function NextPageButton() {
 
   return (
     <div className="flex justify-center my-10">
-      <Button
-        className="bg-neutral-800 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-800 hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors"
-        onClick={handleNextPage}
-      >
+      <Button variant="primary" onClick={handleNextPage}>
         {loading ? 'Carregando...' : 'Carregar mais'}
       </Button>
     </div>
