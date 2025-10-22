@@ -4,7 +4,7 @@ import Image from '@/components/base/Image';
 import Link from '@/components/base/Link';
 import Wrapper from '@/components/container/Wrapper';
 import { ExternalLink } from 'lucide-react';
-import { ArtWorkPageProps } from './type';
+import { ArtWorkPageProps } from './types';
 
 export default async function ArtWork({ params }: ArtWorkPageProps) {
   const { id } = await params;
