@@ -9,7 +9,7 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
-      className={`flex items-center gap-2 p-2 rounded-md outline-none cursor-pointer ${className}`}
+      className={`flex items-center gap-2 py-2 px-4 rounded-md outline-none cursor-pointer ${className}`}
       type={type}
       onClick={onClick}
     >

@@ -8,7 +8,7 @@ export default function Departments() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const { allDepartaments, loadAllDepartamentsFromApi } =
+  const { loading, allDepartaments, loadAllDepartamentsFromApi } =
     useDepartamentsStore();
 
   const { loadAllArtWorksIDsFromApi, loadArtWorksByPage } = useArtworkStore();
@@ -32,6 +32,20 @@ export default function Departments() {
   useEffect(() => {
     loadAllDepartamentsFromApi();
   }, [loadAllDepartamentsFromApi]);
+
+  if (loading) {
+    return (
+      <h2 className="text-2xl font-bold mb-4">Carregando departamentos...</h2>
+    );
+  }
+
+  if (allDepartaments.length === 0) {
+    return (
+      <h2 className="text-2xl font-bold mb-4">
+        Nenhum departamento encontrado.
+      </h2>
+    );
+  }
 
   return (
     <div className="my-8">
