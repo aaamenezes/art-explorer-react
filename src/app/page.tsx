@@ -7,7 +7,7 @@ import Grid from '@/components/container/Grid';
 import Wrapper from '@/components/container/Wrapper';
 import { useArtworkStore } from '@/store/artworks';
 import { useSearchParams } from 'next/navigation';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 
 export default function Home() {
   const searchParams = useSearchParams();
@@ -26,13 +26,6 @@ export default function Home() {
   const handleNextPage = useCallback(() => {
     loadArtWorksByPage(currentPage + 1);
   }, [loadArtWorksByPage, currentPage]);
-
-  useEffect(() => {
-    if (allArtWorksIDs.length === 0)
-      loadAllArtWorksIDsFromApi('painting').then(() => {
-        loadArtWorksByPage(1);
-      });
-  }, [allArtWorksIDs.length, loadAllArtWorksIDsFromApi, loadArtWorksByPage]);
 
   return (
     <Wrapper as="main">
