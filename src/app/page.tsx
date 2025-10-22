@@ -2,7 +2,7 @@
 
 import ArtWorkCard from '@/components/block/ArtWorkCard';
 import NextPageButton from '@/components/block/NextPageButton';
-import Departments from '@/components/container/Departments';
+import Departments from '@/components/section/Departments';
 import Grid from '@/components/container/Grid';
 import Wrapper from '@/components/container/Wrapper';
 import { useArtworkStore } from '@/store/artworks';
