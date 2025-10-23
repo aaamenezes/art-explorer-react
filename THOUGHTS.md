@@ -38,8 +38,12 @@ O motivo foi que foram os dois primeiros sites que lembrei ao pensar em beleza v
 
 ## Quarta-feira, 22/10, dia 6
 
-- Terminar busca por artista/cultura
-- 
+- Busca por artista/cultura
+
+## Quinta-feira, 23/10, dia 7
+
+- Busca por artista/cultura
+
 
 # Requisições
 
