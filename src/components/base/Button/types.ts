@@ -11,4 +11,5 @@ export interface ButtonProps {
     Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>
   >;
   tabIndex?: number;
+  transparent?: boolean;
 }
