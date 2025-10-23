@@ -1,3 +1,4 @@
+import { ARTS_PER_PAGE } from '@/data/constants';
 import { getAllArtWorksIDs, getArtWorkById } from '@/lib/metApi';
 import { ArtWorksPaginationState } from '@/types/artwork';
 import { create } from 'zustand';
@@ -43,8 +44,6 @@ export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
 
     try {
       set({ loading: true, error: null, hasMore: nextPage > 1 });
-
-      const ARTS_PER_PAGE = 15;
 
       const startIndex = (nextPage - 1) * ARTS_PER_PAGE;
       const endIndex = startIndex + ARTS_PER_PAGE;

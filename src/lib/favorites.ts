@@ -1,9 +1,8 @@
 'use client';
 
+import { LOCAL_STORAGE_FAVORITES_KEY } from '@/data/constants';
 import { ArtWorkProps } from '@/types/artwork';
 import { FavoriteArtWorkProps } from '@/types/favorite';
-
-const LOCAL_STORAGE_FAVORITES_KEY = 'met_favorites_artworks';
 
 export function addArtWorkToFavorites(artWorkToSave: ArtWorkProps) {
   if (isArtWorkAlreadyFavorited(artWorkToSave.objectID)) return;

@@ -1,12 +1,10 @@
+import { MET_API_BASE_URL } from '@/data/constants';
 import { ArtWorkProps } from '@/types/artwork';
 import {
   MetApiAllArtWorksIDsResponse,
   MetApiDepartmentsResponse,
 } from '@/types/metApi';
 import axios from 'axios';
-
-export const MET_API_BASE_URL =
-  'https://collectionapi.metmuseum.org/public/collection/v1';
 
 const requester = axios.create({
   baseURL: MET_API_BASE_URL,
