@@ -6,7 +6,7 @@ export default function Input({ placeholder, value, onChange }: InputProps) {
       value={value}
       onChange={event => onChange(event.target.value)}
       type="text"
-      className="px-4 py-2 focus:outline-0"
+      className="px-4 focus:outline-0"
       placeholder={placeholder}
     />
   );
