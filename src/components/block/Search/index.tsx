@@ -10,7 +10,7 @@ import { useCallback, useState } from 'react';
 export default function Search() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [searchKeyword, setSearchKeyword] = useState('');
+  const [keywordSearch, setKeywordSearch] = useState('');
 
   const { loadAllArtWorksIDsFromApi, loadArtWorksByPage } = useArtworkStore();
 
@@ -20,10 +20,12 @@ export default function Search() {
 
       const params = new URLSearchParams(searchParams.toString());
 
-      if (searchKeyword.trim() === '') {
+      if (keywordSearch.trim() === '') {
         params.delete('q');
+        params.delete('departmentId');
+        params.delete('artistOrCulture');
       } else {
-        params.set('q', searchKeyword);
+        params.set('q', keywordSearch);
       }
       params.delete('departmentId');
       router.push(`?${params.toString()}`);
@@ -33,7 +35,7 @@ export default function Search() {
       });
     },
     [
-      searchKeyword,
+      keywordSearch,
       router,
       searchParams,
       loadAllArtWorksIDsFromApi,
@@ -42,16 +44,16 @@ export default function Search() {
   );
 
   const handleChange = useCallback((value: string) => {
-    setSearchKeyword(value);
+    setKeywordSearch(value);
   }, []);
 
   return (
     <form
-      className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-900 dark:hover:bg-gray-800 dark:focus-within:bg-gray-800 pr-4 rounded-md transition focus-within:ring-2 ring-text"
+      className="flex items-center gap-2 p-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-900 dark:hover:bg-gray-800 dark:focus-within:bg-gray-800 pr-4 rounded-md transition focus-within:ring-2 ring-text"
       onSubmit={handleSubmit}
     >
       <Input
-        value={searchKeyword}
+        value={keywordSearch}
         onChange={handleChange}
         placeholder="Buscar obra de arte"
       />
