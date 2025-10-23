@@ -8,13 +8,14 @@ export default function Checkbox({
   name,
   checked,
   onChange,
+  toggle,
 }: CheckboxProps) {
   const handleKeyDown = useCallback(
     (event: KeyboardEvent<HTMLDivElement>) => {
       const allowedKeys = ['Enter', 'Space'];
-      if (allowedKeys.includes(event.code)) onChange(!checked);
+      if (allowedKeys.includes(event.code)) toggle();
     },
-    [checked, onChange]
+    [toggle]
   );
 
   return (

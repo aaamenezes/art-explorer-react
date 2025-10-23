@@ -5,4 +5,5 @@ export interface CheckboxProps {
   name: string;
   checked: boolean;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  toggle: VoidFunction;
 }

@@ -47,6 +47,7 @@ export default function ArtistOrCulture() {
         name="artistOrCulture"
         checked={checked}
         onChange={handleChange}
+        toggle={handleChange}
       />
     </>
   );
