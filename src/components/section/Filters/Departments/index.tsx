@@ -20,9 +20,11 @@ export default function Departments() {
       params.set('departmentId', departmentId.toString());
       router.push(`?${params.toString()}`);
 
-      loadAllArtWorksIDsFromApi(paramQ, departmentId).then(() => {
-        loadArtWorksByPage(1);
-      });
+      loadAllArtWorksIDsFromApi({ keywordSearch: paramQ, departmentId }).then(
+        () => {
+          loadArtWorksByPage(1);
+        }
+      );
     },
     [searchParams, router, loadAllArtWorksIDsFromApi, loadArtWorksByPage]
   );

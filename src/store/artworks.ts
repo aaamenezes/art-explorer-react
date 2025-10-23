@@ -9,11 +9,12 @@ export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
   loading: false,
   error: null,
   hasMore: true,
-  loadAllArtWorksIDsFromApi: async (
-    searchKeyword: string,
-    departmentId?: number
-  ) => {
-    if (searchKeyword.trim() === '') {
+  loadAllArtWorksIDsFromApi: async ({
+    keywordSearch,
+    departmentId,
+    artistOrCulture,
+  }) => {
+    if (keywordSearch.trim() === '') {
       set({ allArtWorksIDs: [], artWorksData: [] });
       return;
     }

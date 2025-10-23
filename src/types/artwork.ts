@@ -14,6 +14,12 @@ export interface ArtWorkProps {
   objectURL: string;
 }
 
+interface LoadAllArtWorksIDsFromApiProps {
+  keywordSearch: string;
+  departmentId?: number;
+  artistOrCulture?: boolean;
+}
+
 export interface ArtWorksPaginationState {
   allArtWorksIDs: MetApiAllArtWorksIDsResponse['objectIDs'];
   artWorksData: ArtWorkProps[];
@@ -21,10 +27,11 @@ export interface ArtWorksPaginationState {
   loading: boolean;
   error: string | null;
   hasMore: boolean;
-  loadAllArtWorksIDsFromApi: (
-    keyWordSearch: string,
-    departmentId?: number
-  ) => Promise<void>;
+  loadAllArtWorksIDsFromApi: ({
+    keywordSearch,
+    departmentId,
+    artistOrCulture,
+  }: LoadAllArtWorksIDsFromApiProps) => Promise<void>;
   loadArtWorksByPage: (page: number) => Promise<void>;
   reset: () => void;
 }
