@@ -23,13 +23,15 @@ function handleRequestError<ReturnValueType = null>(
 
 export async function getAllArtWorksIDs(
   searchKeyword: string,
-  departmentId?: number
+  departmentId?: number,
+  artistOrCulture?: boolean
 ) {
   try {
     const response = await requester.get<MetApiAllArtWorksIDsResponse>(
       '/search',
       {
         params: {
+          artistOrCulture,
           hasImages: true,
           q: searchKeyword,
           departmentId,

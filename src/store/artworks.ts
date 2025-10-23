@@ -24,7 +24,11 @@ export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
 
     try {
       set({ loading: true, error: null });
-      const artworks = await getAllArtWorksIDs(searchKeyword, departmentId);
+      const artworks = await getAllArtWorksIDs(
+        keywordSearch,
+        departmentId,
+        artistOrCulture
+      );
 
       set({ allArtWorksIDs: artworks?.objectIDs || [] });
     } catch (error) {
