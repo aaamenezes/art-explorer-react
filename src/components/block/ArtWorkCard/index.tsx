@@ -1,34 +1,32 @@
 'use client';
 
-import { buildArtWorkAltText } from '@/lib/buildArtWorkAltText';
-import {
-  addArtWorkToFavorites,
-  isArtWorkAlreadyFavorited,
-  removeArtWorkFromFavorites,
-} from '@/lib/favorites';
 import Button from '@/components/base/Button';
 import Image from '@/components/base/Image';
 import Link from '@/components/base/Link';
 import Figure from '@/components/block/Figure';
+import { useFavorite } from '@/hooks/useFavorite';
+import { buildArtWorkAltText } from '@/lib/buildArtWorkAltText';
 import { Star } from 'lucide-react';
 import { useCallback, useState } from 'react';
 import { ArtWorkCardProps } from './types';
 
 export default function ArtWorkCard({ artWorkData }: ArtWorkCardProps) {
+  const favorites = useFavorite();
+
   const [currentArtWorkIsFavorited, setCurrentArtWorkIsFavorited] = useState(
-    isArtWorkAlreadyFavorited(artWorkData.objectID)
+    favorites.isFavorited(artWorkData.objectID)
   );
 
   const handleFavorite = useCallback(() => {
     if (currentArtWorkIsFavorited) {
-      removeArtWorkFromFavorites(artWorkData.objectID);
+      favorites.remove(artWorkData.objectID);
       setCurrentArtWorkIsFavorited(false);
       return;
     }
 
-    addArtWorkToFavorites(artWorkData);
+    favorites.add(artWorkData);
     setCurrentArtWorkIsFavorited(true);
-  }, [currentArtWorkIsFavorited, artWorkData]);
+  }, [currentArtWorkIsFavorited, favorites, artWorkData]);
 
   const artistName = artWorkData.artistDisplayName.replace(/ /g, '+');
 

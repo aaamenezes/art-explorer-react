@@ -1,15 +1,15 @@
 'use client';
 
-import { getFavoritesArtWorks } from '@/lib/favorites';
 import ArtWorkCard from '@/components/block/ArtWorkCard';
 import Grid from '@/components/container/Grid';
+import { useFavorite } from '@/hooks/useFavorite';
 
 export default function FavoritesGrid() {
-  const favoritesArtworks = getFavoritesArtWorks();
+  const favorites = useFavorite();
 
   return (
     <Grid>
-      {favoritesArtworks.map(favoriteArtWork => {
+      {favorites.getAll().map(favoriteArtWork => {
         if (!favoriteArtWork.data.primaryImageSmall) return null;
         return (
           <ArtWorkCard
