@@ -5,19 +5,11 @@ import {
   MetApiDepartmentsResponse,
 } from '@/types/metApi';
 import axios from 'axios';
+import { handleRequestError } from './handleRequestError';
 
 const requester = axios.create({
   baseURL: MET_API_BASE_URL,
 });
-
-function handleRequestError<ReturnValueType = null>(
-  context: string,
-  error: unknown,
-  returnValue: ReturnValueType | null = null
-) {
-  console.error(`Error fetching ${context}:`, error);
-  return returnValue;
-}
 
 export async function getAllArtWorksIDs(
   searchKeyword: string,
