@@ -43,7 +43,17 @@ O motivo foi que foram os dois primeiros sites que lembrei ao pensar em beleza v
 ## Quinta-feira, 23/10, dia 7
 
 - Busca por artista/cultura
+- Converter funções de favoritos em hook
+- Começar testes
 
+## Sexta-feita, 24/10, dia 8
+
+- 
+
+## Sábado, 25/10, dia 9
+
+- Finalizar testes
+- 
 
 # Requisições
 
