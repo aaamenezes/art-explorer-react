@@ -6,8 +6,9 @@ import { useArtworkStore } from '@/store/artworks';
 import { Search as SearchIcon } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useState } from 'react';
+import { SearchProps } from './types';
 
-export default function Search() {
+export default function Search({ className }: SearchProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [keywordSearch, setKeywordSearch] = useState('');
@@ -49,7 +50,7 @@ export default function Search() {
 
   return (
     <form
-      className="flex items-center gap-2 p-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-900 dark:hover:bg-gray-800 dark:focus-within:bg-gray-800 pr-4 rounded-md transition focus-within:ring-2 ring-text"
+      className={`flex justify-between items-center gap-2 p-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-900 dark:hover:bg-gray-800 dark:focus-within:bg-gray-800 pr-4 rounded-md transition focus-within:ring-2 ring-text ${className}`}
       onSubmit={handleSubmit}
     >
       <Input

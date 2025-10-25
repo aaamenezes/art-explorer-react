@@ -15,15 +15,18 @@ export default function PageHeader() {
   }, [reset]);
 
   return (
-    <header className="flex justify-between items-center container mx-auto p-4 border-b-1 border-b-gray-300 dark:border-b-gray-600">
-      <Link href="/" onClick={handleClick}>
+    <header className="grid grid-cols-2 gap-4 md:flex md:items-center md:justify-between container mx-auto p-4 border-b-1 border-b-gray-300 dark:border-b-gray-600">
+      <Link href="/" onClick={handleClick} className="order-1">
         <Logo />
       </Link>
-      <Search />
-      <Link href="/favorites" className="flex items-center gap-2 px-4 py-2">
+      <Link
+        href="/favorites"
+        className="flex items-center justify-end gap-2 px-4 py-2 order-2 md:order-3"
+      >
         <Star />
         Favoritos
       </Link>
+      <Search className="col-span-2 order-3 md:order-2" />
     </header>
   );
 }
