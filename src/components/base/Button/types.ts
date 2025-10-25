@@ -12,4 +12,5 @@ export interface ButtonProps {
   >;
   tabIndex?: number;
   transparent?: boolean;
+  noAnimate?: boolean;
 }

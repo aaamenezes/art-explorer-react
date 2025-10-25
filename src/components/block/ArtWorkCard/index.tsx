@@ -58,6 +58,7 @@ export default function ArtWorkCard({ artWorkData }: ArtWorkCardProps) {
       <Button
         onClick={handleFavorite}
         className="absolute top-1 right-1 bg-white/40 hover:bg-white dark:bg-black/40 dark:hover:bg-black transition"
+        noAnimate
       >
         <Star className={currentArtWorkIsFavorited ? 'fill-current' : ''} />
       </Button>

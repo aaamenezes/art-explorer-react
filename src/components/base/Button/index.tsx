@@ -10,6 +10,7 @@ export default function Button({
   StartIcon,
   tabIndex,
   transparent = false,
+  noAnimate = false,
 }: ButtonProps) {
   const variantsClasses = {
     primary: `${
