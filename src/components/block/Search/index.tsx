@@ -29,7 +29,7 @@ export default function Search({ className }: SearchProps) {
         params.set('q', keywordSearch);
       }
       params.delete('departmentId');
-      router.push(`?${params.toString()}`);
+      router.push(`/?${params.toString()}`);
 
       loadAllArtWorksIDsFromApi({ keywordSearch }).then(() => {
         loadArtWorksByPage(1);
