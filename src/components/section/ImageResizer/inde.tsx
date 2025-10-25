@@ -5,7 +5,7 @@ import { Square, RectangleVertical, RectangleHorizontal } from 'lucide-react';
 export default function ImageResizer() {
   const { setProportionClass } = useImagesStore();
   return (
-    <div className="flex justify-end gap-4 my-8">
+    <div className="flex flex-col md:flex-row items-end justify-end gap-4 my-8">
       <Button
         variant="secondary"
         onClick={() => setProportionClass('square')}
