@@ -9,7 +9,6 @@ import { buildArtWorkAltText } from '@/lib/buildArtWorkAltText';
 import { Star } from 'lucide-react';
 import { useCallback, useState } from 'react';
 import { ArtWorkCardProps } from './types';
-import { motion } from 'motion/react';
 
 export default function ArtWorkCard({ artWorkData }: ArtWorkCardProps) {
   const favorites = useFavorite();
@@ -32,14 +31,7 @@ export default function ArtWorkCard({ artWorkData }: ArtWorkCardProps) {
   const artistName = artWorkData.artistDisplayName.replace(/ /g, '+');
 
   return (
-    <motion.article
-      initial={{ opacity: 0.5 }}
-      animate={{
-        opacity: 1,
-        transition: { duration: 0.3 },
-      }}
-      className="relative rounded-md overflow-hidden bg-neutral-100 dark:bg-neutral-900"
-    >
+    <article className="relative rounded-md overflow-hidden bg-neutral-100 dark:bg-neutral-900">
       <Link href={`/artwork/${artWorkData.objectID}`} className="group">
         <Figure figcaption={artWorkData.title}>
           <div className="overflow-hidden">
@@ -69,6 +61,6 @@ export default function ArtWorkCard({ artWorkData }: ArtWorkCardProps) {
       >
         <Star className={currentArtWorkIsFavorited ? 'fill-current' : ''} />
       </Button>
-    </motion.article>
+    </article>
   );
 }
