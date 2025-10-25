@@ -34,7 +34,7 @@ export default function Departments() {
       <h3 className="text-xl font-bold mb-4">Departamentos:</h3>
       <ul className="flex flex-row gap-2 flex-wrap mb-8">
         {allDepartaments.map(department => (
-          <li key={department.displayName}>
+          <li key={department.departmentId}>
             <Button
               variant="secondary"
               onClick={() => handleFilterDepartment(department.departmentId)}
