@@ -1,5 +1,6 @@
 import Button from '@/components/base/Button';
 import { useDepartamentsStore } from '@/store/departments';
+import { ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import ArtistOrCulture from './ArtistOrCulture';
 import Departments from './Departments';
@@ -32,7 +33,7 @@ export default function Filters() {
     <div className="my-8">
       <div className="flex justify-end">
         <Button variant="secondary" onClick={() => setOpen(!open)}>
-          Filtros
+          Filtros <ChevronDown className="w-4 h-4" />
         </Button>
       </div>
       <div
