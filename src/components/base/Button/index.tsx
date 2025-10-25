@@ -7,7 +7,6 @@ export default function Button({
   onClick,
   type = 'button',
   className = '',
-  StartIcon,
   tabIndex,
   transparent = false,
   noAnimate = false,
@@ -32,7 +31,6 @@ export default function Button({
         onClick={onClick}
         tabIndex={tabIndex}
       >
-        {StartIcon && <StartIcon />}
         {children}
       </button>
     </motion.div>
