@@ -1,3 +1,5 @@
+'use client';
+
 import Button from '@/components/base/Button';
 import { useImagesStore } from '@/store/images';
 import { Square, RectangleVertical, RectangleHorizontal } from 'lucide-react';
