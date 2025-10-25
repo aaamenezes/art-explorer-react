@@ -53,7 +53,8 @@ O motivo foi que foram os dois primeiros sites que lembrei ao pensar em beleza v
 ## Sábado, 25/10, dia 9
 
 - Finalizar testes
-- 
+- Personalizar proporção das imagens
+- Animações com Framer Motion
 
 # Requisições
 
