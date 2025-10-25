@@ -6,7 +6,7 @@ import { FavoriteArtWorkProps } from '@/types/favorite';
 import { useCallback } from 'react';
 
 export function useFavorite() {
-  const getAll = useCallback((): FavoriteArtWorkProps[] => {
+  const getAll = useCallback(() => {
     if (typeof window === 'undefined') return [];
 
     const favoritesStringOrNull = window.localStorage.getItem(
@@ -14,7 +14,9 @@ export function useFavorite() {
     );
     if (!favoritesStringOrNull) return [];
 
-    return JSON.parse(favoritesStringOrNull);
+    const favorites: FavoriteArtWorkProps[] = JSON.parse(favoritesStringOrNull);
+
+    return favorites;
   }, []);
 
   const isFavorited = useCallback(
