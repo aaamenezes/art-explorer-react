@@ -1,4 +1,5 @@
 import { ButtonProps } from './types';
+import { motion } from 'framer-motion';
 
 export default function Button({
   children,
@@ -19,14 +20,16 @@ export default function Button({
     } text-neutral-800 dark:text-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors`,
   };
   return (
-    <button
-      className={`flex items-center gap-2 py-2 px-4 rounded-md outline-none cursor-pointer ${variantsClasses[variant]} ${className}`}
-      type={type}
-      onClick={onClick}
-      tabIndex={tabIndex}
-    >
-      {StartIcon && <StartIcon />}
-      {children}
-    </button>
+    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
+      <button
+        className={`flex items-center gap-2 py-2 px-4 rounded-md outline-none cursor-pointer ${variantsClasses[variant]} ${className}`}
+        type={type}
+        onClick={onClick}
+        tabIndex={tabIndex}
+      >
+        {StartIcon && <StartIcon />}
+        {children}
+      </button>
+    </motion.div>
   );
 }
