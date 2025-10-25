@@ -1,19 +1,20 @@
 'use client';
 
+import AnimatedCube from '@/components/block/AnimatedCube';
 import ArtWorkCard from '@/components/block/ArtWorkCard';
 import NextPageButton from '@/components/block/NextPageButton';
-import Filters from '@/components/section/Filters';
 import Grid from '@/components/container/Grid';
 import Wrapper from '@/components/container/Wrapper';
+import Filters from '@/components/section/Filters';
+import ImageResizer from '@/components/section/ImageResizer/inde';
 import { useArtworkStore } from '@/store/artworks';
 import { useSearchParams } from 'next/navigation';
-import ImageResizer from '@/components/section/ImageResizer/inde';
 
 export default function Home() {
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams.toString());
 
-  const { error, hasMore, artWorksData } = useArtworkStore();
+  const { error, hasMore, artWorksData, loading } = useArtworkStore();
 
   return (
     <Wrapper as="main">
@@ -26,6 +27,12 @@ export default function Home() {
             Use a caixa de busca no topo da tela para encontrar obras
             específicas.
           </p>
+        )}
+        {params.has('q') && artWorksData.length === 0 && !loading && (
+          <>
+            <p>Nenhuma obra encontrada para essa busca.</p>
+            <AnimatedCube />
+          </>
         )}
       </div>
 
