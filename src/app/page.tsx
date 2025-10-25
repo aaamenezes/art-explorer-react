@@ -9,12 +9,44 @@ import Filters from '@/components/section/Filters';
 import ImageResizer from '@/components/section/ImageResizer/inde';
 import { useArtworkStore } from '@/store/artworks';
 import { useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function Home() {
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams.toString());
 
-  const { error, hasMore, artWorksData, loading } = useArtworkStore();
+  const {
+    error,
+    hasMore,
+    artWorksData,
+    loading,
+    loadAllArtWorksIDsFromApi,
+    loadArtWorksByPage,
+  } = useArtworkStore();
+
+  useEffect(() => {
+    if (params.has('q')) {
+      if (artWorksData.length > 0) return;
+
+      const keywordSearch = params.get('q') || '';
+      const departmentId = params.get('departmentId') || undefined;
+      const artistOrCultureParam = params.get('artistOrCulture');
+      const artistOrCulture =
+        artistOrCultureParam === 'true'
+          ? true
+          : artistOrCultureParam === 'false'
+          ? false
+          : undefined;
+
+      loadAllArtWorksIDsFromApi({
+        keywordSearch,
+        departmentId: departmentId ? parseInt(departmentId, 10) : undefined,
+        artistOrCulture,
+      }).then(() => {
+        loadArtWorksByPage(1);
+      });
+    }
+  }, []);
 
   return (
     <Wrapper as="main">
