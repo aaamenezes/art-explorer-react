@@ -6,6 +6,7 @@ import Link from '@/components/base/Link';
 import Figure from '@/components/block/Figure';
 import { useFavorite } from '@/hooks/useFavorite';
 import { buildArtWorkAltText } from '@/lib/buildArtWorkAltText';
+import { useImagesStore } from '@/store/images';
 import { Star } from 'lucide-react';
 import { useCallback, useState } from 'react';
 import { ArtWorkCardProps } from './types';
@@ -30,6 +31,8 @@ export default function ArtWorkCard({ artWorkData }: ArtWorkCardProps) {
 
   const artistName = artWorkData.artistDisplayName.replace(/ /g, '+');
 
+  const { proportionClass } = useImagesStore();
+
   return (
     <article className="relative rounded-md overflow-hidden bg-neutral-100 dark:bg-neutral-900">
       <Link href={`/artwork/${artWorkData.objectID}`} className="group">
@@ -38,7 +41,7 @@ export default function ArtWorkCard({ artWorkData }: ArtWorkCardProps) {
             <Image
               src={artWorkData.primaryImageSmall}
               alt={buildArtWorkAltText(artWorkData)}
-              className="group-hover:scale-120 duration-2000 aspect-3/4 object-cover"
+              className={`group-hover:scale-120 duration-2000 ${proportionClass} object-cover`}
             />
           </div>
         </Figure>
