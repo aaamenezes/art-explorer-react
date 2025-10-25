@@ -7,6 +7,7 @@ import Grid from '@/components/container/Grid';
 import Wrapper from '@/components/container/Wrapper';
 import { useArtworkStore } from '@/store/artworks';
 import { useSearchParams } from 'next/navigation';
+import ImageResizer from '@/components/section/ImageResizer/inde';
 
 export default function Home() {
   const searchParams = useSearchParams();
@@ -28,7 +29,12 @@ export default function Home() {
         )}
       </div>
 
-      {params.has('q') && artWorksData.length > 0 && <Filters />}
+      {params.has('q') && artWorksData.length > 0 && (
+        <>
+          <ImageResizer />
+          <Filters />
+        </>
+      )}
 
       <Grid>
         {artWorksData.map(artWork => {
