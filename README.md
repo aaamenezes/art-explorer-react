@@ -10,6 +10,10 @@ A aplicação é um site que exibe obras de arte do Metropolitan Museum of Art p
 
 Por fim, o usuário pode favoritar as obras que mais gostou e ver todas elas reunidas na página de favoritos.
 
+A aplição está responsiva para qualquer tamanho de tela, e também em light mode e dark mode.
+
+Ao final desse documento, você pode ver vídeos da aplicação em ação.
+
 # Table of Contents
 
 - [Metropolitan Museum of Art](#metropolitan-museum-of-art)
@@ -43,6 +47,15 @@ Por fim, o usuário pode favoritar as obras que mais gostou e ver todas elas reu
   - [Tipagem `./src/types`](#tipagem-srctypes)
 - [Testes](#testes)
 - [Aplicação em ação](#aplicação-em-ação)
+  - [Busca de obras de arte](#busca-de-obras-de-arte)
+  - [Carregar novas obras](#carregar-novas-obras)
+  - [Filtrar por departamento](#filtrar-por-departamento)
+  - [Alterar orientação das imagens](#alterar-orientação-das-imagens)
+  - [Acessar página de obras favoritas vazia](#acessar-página-de-obras-favoritas-vazia)
+  - [Favoritas obra e ver na lista de favoritas](#favoritas-obra-e-ver-na-lista-de-favoritas)
+  - [Acessar detalhes de uma obra](#acessar-detalhes-de-uma-obra)
+  - [Exemplo da aplicação em light mode](#exemplo-da-aplicação-em-light-mode)
+  - [Exemplo da aplicação em mobile](#exemplo-da-aplicação-em-mobile)
 
 # Apresentação
 
@@ -249,4 +262,22 @@ Foram criados dois testes:
 https://github.com/user-attachments/assets/378dafdd-8bee-4f42-b6ae-0e802b40840f
 
 # Aplicação em ação
+
+## Busca de obras de arte
+
+## Carregar novas obras
+
+## Filtrar por departamento
+
+## Alterar orientação das imagens
+
+## Acessar página de obras favoritas vazia
+
+## Favoritas obra e ver na lista de favoritas
+
+## Acessar detalhes de uma obra
+
+## Exemplo da aplicação em light mode
+
+## Exemplo da aplicação em mobile
 
