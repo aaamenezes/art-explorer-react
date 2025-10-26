@@ -3,6 +3,7 @@
 import AnimatedCube from '@/components/block/AnimatedCube';
 import ArtworkCard from '@/components/block/ArtworkCard';
 import ConicGradientPointer from '@/components/block/ConicGradientPointer';
+import ErrorIllustration from '@/components/block/ErrorIllustration';
 import NextPageButton from '@/components/block/NextPageButton';
 import Grid from '@/components/container/Grid';
 import Wrapper from '@/components/container/Wrapper';
@@ -72,7 +73,10 @@ export default function Home() {
         )}
         {params.has('q') && !loading && artworksData.length === 0 && (
           <>
-            <p>Nenhuma obra encontrada para essa busca.</p>
+            <p>Nenhuma obra encontrada para essa busca. Tente novamente.</p>
+            <div className="flex justify-center">
+              <ErrorIllustration />
+            </div>
           </>
         )}
       </div>
