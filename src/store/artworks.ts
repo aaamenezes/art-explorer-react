@@ -1,5 +1,5 @@
 import { ARTS_PER_PAGE } from '@/data/constants';
-import { getAllArtWorksIDs, getArtWorkById } from '@/lib/metApi';
+import { getAllArtWorksIDs, getArtWorkByID } from '@/lib/metApi';
 import { ArtWorksPaginationState } from '@/types/artwork';
 import { create } from 'zustand';
 
@@ -51,7 +51,7 @@ export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
         .slice(startIndex, endIndex)
         .map(objectId => objectId.toString());
 
-      const artWorksPromises = artWorksIDs.map(getArtWorkById);
+      const artWorksPromises = artWorksIDs.map(getArtWorkByID);
       const newArtWorks = await Promise.all(artWorksPromises).then(results =>
         results.filter(result => result !== null)
       );

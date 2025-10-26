@@ -1,5 +1,5 @@
 import { buildArtWorkAltText } from '@/lib/buildArtWorkAltText';
-import { getArtWorkById } from '@/lib/metApi';
+import { getArtWorkByID } from '@/lib/metApi';
 import Image from '@/components/base/Image';
 import Link from '@/components/base/Link';
 import Wrapper from '@/components/container/Wrapper';
@@ -8,7 +8,7 @@ import { ArtWorkPageProps } from './types';
 
 export default async function ArtWork({ params }: ArtWorkPageProps) {
   const { id } = await params;
-  const artWork = await getArtWorkById(id);
+  const artWork = await getArtWorkByID(id);
 
   return (
     <Wrapper as="main">
