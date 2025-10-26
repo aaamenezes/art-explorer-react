@@ -1,6 +1,6 @@
 import { Departament } from './departament';
 
-export interface MetApiAllArtWorksIDsResponse {
+export interface MetApiAllArtworksIDsResponse {
   total: number;
   objectIDs: number[];
 }

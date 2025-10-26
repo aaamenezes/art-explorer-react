@@ -31,7 +31,7 @@ describe('useFavorite', () => {
     jest.clearAllMocks();
   });
 
-  const sampleArtWork = {
+  const sampleArtwork = {
     objectID: 1,
     title: 'Mona Lisa',
     primaryImage: 'big.jpg',
@@ -54,7 +54,7 @@ describe('useFavorite', () => {
 
   it('getAll deve retornar os favoritos salvos no localStorage', () => {
     const favoritesMock = [
-      { id: 1, data: sampleArtWork, updatedAt: new Date() },
+      { id: 1, data: sampleArtwork, updatedAt: new Date() },
     ];
     window.localStorage.setItem(
       LOCAL_STORAGE_FAVORITES_KEY,
@@ -70,7 +70,7 @@ describe('useFavorite', () => {
 
   it('isFavorited deve retornar true se o ID estiver salvo', () => {
     const favoritesMock = [
-      { id: 1, data: sampleArtWork, updatedAt: new Date() },
+      { id: 1, data: sampleArtwork, updatedAt: new Date() },
     ];
     window.localStorage.setItem(
       LOCAL_STORAGE_FAVORITES_KEY,
@@ -89,7 +89,7 @@ describe('useFavorite', () => {
     const { add, getAll } = result.current;
 
     act(() => {
-      add(sampleArtWork);
+      add(sampleArtwork);
     });
 
     const saved = JSON.parse(
@@ -106,8 +106,8 @@ describe('useFavorite', () => {
     const { add } = result.current;
 
     act(() => {
-      add(sampleArtWork);
-      add(sampleArtWork);
+      add(sampleArtwork);
+      add(sampleArtwork);
     });
 
     const saved = JSON.parse(
@@ -122,13 +122,13 @@ describe('useFavorite', () => {
     const { add, remove, getAll } = result.current;
 
     act(() => {
-      add(sampleArtWork);
+      add(sampleArtwork);
     });
 
     expect(getAll()).toHaveLength(1);
 
     act(() => {
-      remove(sampleArtWork.objectID);
+      remove(sampleArtwork.objectID);
     });
 
     const saved = JSON.parse(

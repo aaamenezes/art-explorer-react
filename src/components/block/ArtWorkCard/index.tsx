@@ -5,42 +5,42 @@ import Image from '@/components/base/Image';
 import Link from '@/components/base/Link';
 import Figure from '@/components/block/Figure';
 import { useFavorite } from '@/hooks/useFavorite';
-import { buildArtWorkAltText } from '@/lib/buildArtWorkAltText';
+import { buildArtworkAltText } from '@/lib/buildArtworkAltText';
 import { useImagesStore } from '@/store/images';
 import { Star } from 'lucide-react';
 import { useCallback, useState } from 'react';
-import { ArtWorkCardProps } from './types';
+import { ArtworkCardProps } from './types';
 
-export default function ArtWorkCard({ artWorkData }: ArtWorkCardProps) {
+export default function ArtworkCard({ artworkData }: ArtworkCardProps) {
   const favorites = useFavorite();
 
-  const [currentArtWorkIsFavorited, setCurrentArtWorkIsFavorited] = useState(
-    favorites.isFavorited(artWorkData.objectID)
+  const [currentArtworkIsFavorited, setCurrentArtworkIsFavorited] = useState(
+    favorites.isFavorited(artworkData.objectID)
   );
 
   const handleFavorite = useCallback(() => {
-    if (currentArtWorkIsFavorited) {
-      favorites.remove(artWorkData.objectID);
-      setCurrentArtWorkIsFavorited(false);
+    if (currentArtworkIsFavorited) {
+      favorites.remove(artworkData.objectID);
+      setCurrentArtworkIsFavorited(false);
       return;
     }
 
-    favorites.add(artWorkData);
-    setCurrentArtWorkIsFavorited(true);
-  }, [currentArtWorkIsFavorited, favorites, artWorkData]);
+    favorites.add(artworkData);
+    setCurrentArtworkIsFavorited(true);
+  }, [currentArtworkIsFavorited, favorites, artworkData]);
 
-  const artistName = artWorkData.artistDisplayName.replace(/ /g, '+');
+  const artistName = artworkData.artistDisplayName.replace(/ /g, '+');
 
   const { proportionClass } = useImagesStore();
 
   return (
     <article className="relative rounded-md overflow-hidden bg-neutral-100 dark:bg-neutral-900">
-      <Link href={`/artwork/${artWorkData.objectID}`} className="group">
-        <Figure figcaption={artWorkData.title}>
+      <Link href={`/artwork/${artworkData.objectID}`} className="group">
+        <Figure figcaption={artworkData.title}>
           <div className="overflow-hidden">
             <Image
-              src={artWorkData.primaryImageSmall}
-              alt={buildArtWorkAltText(artWorkData)}
+              src={artworkData.primaryImageSmall}
+              alt={buildArtworkAltText(artworkData)}
               className={`group-hover:scale-120 duration-1000 ${proportionClass} object-cover`}
             />
           </div>
@@ -53,22 +53,22 @@ export default function ArtWorkCard({ artWorkData }: ArtWorkCardProps) {
             className="hover:underline"
             external
           >
-            {artWorkData.artistDisplayName}
+            {artworkData.artistDisplayName}
           </Link>
         </p>
-        <p>{artWorkData.objectDate}</p>
+        <p>{artworkData.objectDate}</p>
       </div>
       <Button
         onClick={handleFavorite}
         className="absolute top-1 right-1 bg-white/40 hover:bg-white dark:bg-black/40 dark:hover:bg-black transition"
         aria-label={
-          currentArtWorkIsFavorited
+          currentArtworkIsFavorited
             ? 'Remover dos favoritos'
             : 'Adicionar aos favoritos'
         }
         noAnimate
       >
-        <Star className={currentArtWorkIsFavorited ? 'fill-current' : ''} />
+        <Star className={currentArtworkIsFavorited ? 'fill-current' : ''} />
       </Button>
     </article>
   );

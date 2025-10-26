@@ -13,7 +13,7 @@ export default function Search({ className }: SearchProps) {
   const searchParams = useSearchParams();
   const [keywordSearch, setKeywordSearch] = useState('');
 
-  const { loadAllArtWorksIDsFromApi, loadArtWorksByPage } = useArtworkStore();
+  const { loadAllArtworksIDsFromApi, loadArtworksByPage } = useArtworkStore();
 
   const handleSubmit = useCallback(
     (e: React.FormEvent) => {
@@ -31,16 +31,16 @@ export default function Search({ className }: SearchProps) {
       params.delete('departmentId');
       router.push(`/?${params.toString()}`);
 
-      loadAllArtWorksIDsFromApi({ keywordSearch }).then(() => {
-        loadArtWorksByPage(1);
+      loadAllArtworksIDsFromApi({ keywordSearch }).then(() => {
+        loadArtworksByPage(1);
       });
     },
     [
       keywordSearch,
       router,
       searchParams,
-      loadAllArtWorksIDsFromApi,
-      loadArtWorksByPage,
+      loadAllArtworksIDsFromApi,
+      loadArtworksByPage,
     ]
   );
 

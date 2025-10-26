@@ -1,10 +1,10 @@
 import { handleRequestError } from '@/lib/handleRequestError';
-import { ArtWorkProps } from '@/types/artwork';
+import { ArtworkProps } from '@/types/artwork';
 import { requester } from '..';
 
-export async function getArtWorkByID(objectID: string) {
+export async function getArtworkByID(objectID: string) {
   try {
-    const response = await requester.get<ArtWorkProps>(`/objects/${objectID}`);
+    const response = await requester.get<ArtworkProps>(`/objects/${objectID}`);
 
     return response.data;
   } catch (error) {

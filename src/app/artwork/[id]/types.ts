@@ -1,4 +1,4 @@
-export interface ArtWorkPageProps {
+export interface ArtworkPageProps {
   params: {
     id: string;
   };

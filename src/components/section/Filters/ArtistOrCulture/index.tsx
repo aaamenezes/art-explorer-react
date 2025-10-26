@@ -8,7 +8,7 @@ export default function ArtistOrCulture() {
   const searchParams = useSearchParams();
   const [checked, setChecked] = useState(false);
 
-  const { loadAllArtWorksIDsFromApi, loadArtWorksByPage } = useArtworkStore();
+  const { loadAllArtworksIDsFromApi, loadArtworksByPage } = useArtworkStore();
 
   const handleChange = useCallback(() => {
     const currentChecked = !checked;
@@ -25,16 +25,16 @@ export default function ArtistOrCulture() {
     }
     router.push(`?${params.toString()}`);
 
-    loadAllArtWorksIDsFromApi({
+    loadAllArtworksIDsFromApi({
       keywordSearch: paramQ,
       artistOrCulture: currentChecked ? true : undefined,
     }).then(() => {
-      loadArtWorksByPage(1);
+      loadArtworksByPage(1);
     });
   }, [
     checked,
-    loadAllArtWorksIDsFromApi,
-    loadArtWorksByPage,
+    loadAllArtworksIDsFromApi,
+    loadArtworksByPage,
     router,
     searchParams,
   ]);

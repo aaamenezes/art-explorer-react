@@ -1,12 +1,15 @@
 'use client';
 
 import { motion, useMotionValue, useTransform } from 'motion/react';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 
 export default function ConicGradientPointer() {
   const conicRef = useRef<HTMLDivElement>(null);
-  const [{ width, height, top, left }, measure] =
-    useElementDimensions(conicRef);
+
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const top = 0;
+  const left = 0;
 
   const gradientX = useMotionValue(0.5);
   const gradientY = useMotionValue(0.5);
@@ -32,29 +35,7 @@ export default function ConicGradientPointer() {
         ref={conicRef}
         className={`w-full h-full opacity-20 cursor-none`}
         style={{ background }}
-        onPointerEnter={() => measure()}
       />
     </div>
   );
-}
-
-function useElementDimensions(
-  ref: React.RefObject<HTMLDivElement | null>
-): [
-  { width: number; height: number; top: number; left: number },
-  VoidFunction
-] {
-  const [size, setSize] = useState({ width: 0, height: 0, top: 0, left: 0 });
-
-  function measure() {
-    if (!ref.current) return;
-
-    setSize(ref.current.getBoundingClientRect());
-  }
-
-  useEffect(() => {
-    measure();
-  }, []);
-
-  return [size, measure];
 }

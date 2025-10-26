@@ -1,22 +1,22 @@
 import { ARTS_PER_PAGE } from '@/data/constants';
-import { getAllArtWorksIDs, getArtWorkByID } from '@/lib/metApi';
-import { ArtWorksPaginationState } from '@/types/artwork';
+import { getAllArtworksIDs, getArtworkByID } from '@/lib/metApi';
+import { ArtworksPaginationState } from '@/types/artwork';
 import { create } from 'zustand';
 
-export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
-  allArtWorksIDs: [],
-  artWorksData: [],
+export const useArtworkStore = create<ArtworksPaginationState>((set, get) => ({
+  allArtworksIDs: [],
+  artworksData: [],
   currentPage: 1,
   loading: false,
   error: null,
   hasMore: true,
-  loadAllArtWorksIDsFromApi: async ({
+  loadAllArtworksIDsFromApi: async ({
     keywordSearch,
     departmentId,
     artistOrCulture,
   }) => {
     if (keywordSearch.trim() === '') {
-      set({ allArtWorksIDs: [], artWorksData: [] });
+      set({ allArtworksIDs: [], artworksData: [] });
       return;
     }
 
@@ -25,21 +25,21 @@ export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
 
     try {
       set({ loading: true, error: null });
-      const artworks = await getAllArtWorksIDs({
+      const artworks = await getAllArtworksIDs({
         keywordSearch,
         departmentId,
         artistOrCulture,
       });
 
-      set({ allArtWorksIDs: artworks?.objectIDs || [] });
+      set({ allArtworksIDs: artworks?.objectIDs || [] });
     } catch (error) {
       set({ error: `Falha ao carregar obras. ${error}` });
     } finally {
       set({ loading: false });
     }
   },
-  loadArtWorksByPage: async (nextPage: number) => {
-    const { allArtWorksIDs, artWorksData, loading } = get();
+  loadArtworksByPage: async (nextPage: number) => {
+    const { allArtworksIDs, artworksData, loading } = get();
     if (loading) return;
 
     try {
@@ -47,23 +47,23 @@ export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
 
       const startIndex = (nextPage - 1) * ARTS_PER_PAGE;
       const endIndex = startIndex + ARTS_PER_PAGE;
-      const artWorksIDs = allArtWorksIDs
+      const artworksIDs = allArtworksIDs
         .slice(startIndex, endIndex)
         .map(objectId => objectId.toString());
 
-      const artWorksPromises = artWorksIDs.map(getArtWorkByID);
-      const newArtWorks = await Promise.all(artWorksPromises).then(results =>
+      const artworksPromises = artworksIDs.map(getArtworkByID);
+      const newArtworks = await Promise.all(artworksPromises).then(results =>
         results.filter(result => result !== null)
       );
 
       const isNewSearch = nextPage === 1;
 
       set({
-        artWorksData: isNewSearch
-          ? newArtWorks
-          : [...artWorksData, ...newArtWorks],
+        artworksData: isNewSearch
+          ? newArtworks
+          : [...artworksData, ...newArtworks],
         currentPage: nextPage,
-        hasMore: endIndex < allArtWorksIDs.length,
+        hasMore: endIndex < allArtworksIDs.length,
       });
     } catch (error) {
       set({ error: `Falha ao carregar obras. ${error}`, hasMore: false });
@@ -73,8 +73,8 @@ export const useArtworkStore = create<ArtWorksPaginationState>((set, get) => ({
   },
   reset: () => {
     set({
-      allArtWorksIDs: [],
-      artWorksData: [],
+      allArtworksIDs: [],
+      artworksData: [],
       currentPage: 1,
       loading: false,
       error: null,

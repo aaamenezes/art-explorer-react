@@ -9,7 +9,7 @@ export default function Departments() {
   const searchParams = useSearchParams();
 
   const { allDepartaments } = useDepartamentsStore();
-  const { loadAllArtWorksIDsFromApi, loadArtWorksByPage } = useArtworkStore();
+  const { loadAllArtworksIDsFromApi, loadArtworksByPage } = useArtworkStore();
 
   const handleFilterDepartment = useCallback(
     (departmentId: number) => {
@@ -20,13 +20,13 @@ export default function Departments() {
       params.set('departmentId', departmentId.toString());
       router.push(`?${params.toString()}`);
 
-      loadAllArtWorksIDsFromApi({ keywordSearch: paramQ, departmentId }).then(
+      loadAllArtworksIDsFromApi({ keywordSearch: paramQ, departmentId }).then(
         () => {
-          loadArtWorksByPage(1);
+          loadArtworksByPage(1);
         }
       );
     },
-    [searchParams, router, loadAllArtWorksIDsFromApi, loadArtWorksByPage]
+    [searchParams, router, loadAllArtworksIDsFromApi, loadArtworksByPage]
   );
 
   return (

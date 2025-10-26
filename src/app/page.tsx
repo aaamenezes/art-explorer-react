@@ -1,7 +1,7 @@
 'use client';
 
 import AnimatedCube from '@/components/block/AnimatedCube';
-import ArtWorkCard from '@/components/block/ArtWorkCard';
+import ArtworkCard from '@/components/block/ArtworkCard';
 import ConicGradientPointer from '@/components/block/ConicGradientPointer';
 import NextPageButton from '@/components/block/NextPageButton';
 import Grid from '@/components/container/Grid';
@@ -19,15 +19,15 @@ export default function Home() {
   const {
     error,
     hasMore,
-    artWorksData,
+    artworksData,
     loading,
-    loadAllArtWorksIDsFromApi,
-    loadArtWorksByPage,
+    loadAllArtworksIDsFromApi,
+    loadArtworksByPage,
   } = useArtworkStore();
 
   useEffect(() => {
     if (params.has('q')) {
-      if (artWorksData.length > 0) return;
+      if (artworksData.length > 0) return;
 
       const keywordSearch = params.get('q') || '';
       const departmentId = params.get('departmentId') || undefined;
@@ -39,12 +39,12 @@ export default function Home() {
           ? false
           : undefined;
 
-      loadAllArtWorksIDsFromApi({
+      loadAllArtworksIDsFromApi({
         keywordSearch,
         departmentId: departmentId ? parseInt(departmentId, 10) : undefined,
         artistOrCulture,
       }).then(() => {
-        loadArtWorksByPage(1);
+        loadArtworksByPage(1);
       });
     }
   }, []);
@@ -70,22 +70,22 @@ export default function Home() {
             <AnimatedCube />
           </>
         )}
-        {params.has('q') && !loading && artWorksData.length === 0 && (
+        {params.has('q') && !loading && artworksData.length === 0 && (
           <>
             <p>Nenhuma obra encontrada para essa busca.</p>
           </>
         )}
       </div>
 
-      {params.has('q') && !loading && artWorksData.length > 0 && (
+      {params.has('q') && !loading && artworksData.length > 0 && (
         <>
           <ImageResizer />
           <Filters />
           <Grid>
-            {artWorksData.map(artWork => {
-              if (!artWork.primaryImageSmall) return null;
+            {artworksData.map(artwork => {
+              if (!artwork.primaryImageSmall) return null;
               return (
-                <ArtWorkCard key={artWork.objectID} artWorkData={artWork} />
+                <ArtworkCard key={artwork.objectID} artworkData={artwork} />
               );
             })}
           </Grid>
@@ -94,7 +94,7 @@ export default function Home() {
 
       {error && <p className="text-red-700 dark:text-red-300">{error}</p>}
 
-      {hasMore && !loading && artWorksData.length > 0 && <NextPageButton />}
+      {hasMore && !loading && artworksData.length > 0 && <NextPageButton />}
     </Wrapper>
   );
 }

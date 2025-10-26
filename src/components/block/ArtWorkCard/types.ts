@@ -1,5 +1,5 @@
-import { ArtWorkProps } from '@/types/artwork';
+import { ArtworkProps } from '@/types/artwork';
 
-export interface ArtWorkCardProps {
-  artWorkData: ArtWorkProps;
+export interface ArtworkCardProps {
+  artworkData: ArtworkProps;
 }

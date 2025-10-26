@@ -1,7 +1,7 @@
-import { ArtWorkProps } from './artwork';
+import { ArtworkProps } from './artwork';
 
-export interface FavoriteArtWorkProps {
+export interface FavoriteArtworkProps {
   id: number;
-  data: ArtWorkProps;
+  data: ArtworkProps;
   updatedAt: Date;
 }

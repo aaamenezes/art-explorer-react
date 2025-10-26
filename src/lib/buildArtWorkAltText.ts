@@ -1,5 +1,5 @@
-import { ArtWorkProps } from '@/types/artwork';
+import { ArtworkProps } from '@/types/artwork';
 
-export function buildArtWorkAltText(artWork: ArtWorkProps) {
-  return `${artWork.title}, ${artWork.artistDisplayName} (${artWork.artistDisplayBio}), ${artWork.medium}, ${artWork.culture}`;
+export function buildArtworkAltText(artwork: ArtworkProps) {
+  return `${artwork.title}, ${artwork.artistDisplayName} (${artwork.artistDisplayBio}), ${artwork.medium}, ${artwork.culture}`;
 }

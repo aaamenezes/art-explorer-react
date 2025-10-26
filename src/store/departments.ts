@@ -1,4 +1,4 @@
-import { getArtWorksDepartments } from '@/lib/metApi';
+import { getArtworksDepartments } from '@/lib/metApi';
 import { DepartamentsState } from '@/types/departament';
 import { create } from 'zustand';
 
@@ -12,7 +12,7 @@ export const useDepartamentsStore = create<DepartamentsState>((set, get) => ({
 
     try {
       set({ loading: true, error: null });
-      const departmentsData = await getArtWorksDepartments();
+      const departmentsData = await getArtworksDepartments();
 
       set({ allDepartaments: departmentsData?.departments || [] });
     } catch (error) {

@@ -4,11 +4,11 @@ import { ArrowBigDownDash, LoaderPinwheel } from 'lucide-react';
 import { useCallback } from 'react';
 
 export default function NextPageButton() {
-  const { loading, loadArtWorksByPage, currentPage } = useArtworkStore();
+  const { loading, loadArtworksByPage, currentPage } = useArtworkStore();
 
   const handleNextPage = useCallback(() => {
-    loadArtWorksByPage(currentPage + 1);
-  }, [loadArtWorksByPage, currentPage]);
+    loadArtworksByPage(currentPage + 1);
+  }, [loadArtworksByPage, currentPage]);
 
   return (
     <div className="flex justify-center my-10">

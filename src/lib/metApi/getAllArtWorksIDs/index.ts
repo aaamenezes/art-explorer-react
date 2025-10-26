@@ -1,15 +1,15 @@
-import { MetApiAllArtWorksIDsResponse } from '@/types/metApi';
+import { MetApiAllArtworksIDsResponse } from '@/types/metApi';
 import { requester } from '..';
 import { handleRequestError } from '@/lib/handleRequestError';
-import { getAllArtWorksIDsProps } from './types';
+import { getAllArtworksIDsProps } from './types';
 
-export async function getAllArtWorksIDs({
+export async function getAllArtworksIDs({
   keywordSearch,
   departmentId,
   artistOrCulture,
-}: getAllArtWorksIDsProps) {
+}: getAllArtworksIDsProps) {
   try {
-    const response = await requester.get<MetApiAllArtWorksIDsResponse>(
+    const response = await requester.get<MetApiAllArtworksIDsResponse>(
       '/search',
       {
         params: {

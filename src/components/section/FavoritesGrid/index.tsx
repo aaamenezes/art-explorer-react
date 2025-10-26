@@ -1,13 +1,13 @@
 'use client';
 
-import ArtWorkCard from '@/components/block/ArtWorkCard';
+import ArtworkCard from '@/components/block/ArtworkCard';
 import Grid from '@/components/container/Grid';
 import { useFavorite } from '@/hooks/useFavorite';
-import { FavoriteArtWorkProps } from '@/types/favorite';
+import { FavoriteArtworkProps } from '@/types/favorite';
 import { useEffect, useState } from 'react';
 
 export default function FavoritesGrid() {
-  const [favorites, setFavorites] = useState<FavoriteArtWorkProps[]>([]);
+  const [favorites, setFavorites] = useState<FavoriteArtworkProps[]>([]);
 
   const favoritesHook = useFavorite();
 
@@ -17,13 +17,13 @@ export default function FavoritesGrid() {
 
   return (
     <Grid>
-      {favorites.map(favoriteArtWork => {
-        if (!favoriteArtWork.data.primaryImageSmall) return null;
+      {favorites.map(favoriteArtwork => {
+        if (!favoriteArtwork.data.primaryImageSmall) return null;
 
         return (
-          <ArtWorkCard
-            key={favoriteArtWork.data.objectID}
-            artWorkData={favoriteArtWork.data}
+          <ArtworkCard
+            key={favoriteArtwork.data.objectID}
+            artworkData={favoriteArtwork.data}
           />
         );
       })}
