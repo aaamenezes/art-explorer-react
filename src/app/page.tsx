@@ -2,6 +2,7 @@
 
 import AnimatedCube from '@/components/block/AnimatedCube';
 import ArtWorkCard from '@/components/block/ArtWorkCard';
+import ConicGradientPointer from '@/components/block/ConicGradientPointer';
 import NextPageButton from '@/components/block/NextPageButton';
 import Grid from '@/components/container/Grid';
 import Wrapper from '@/components/container/Wrapper';
@@ -55,10 +56,13 @@ export default function Home() {
           Veja as obras do Metropolitan Museum of Art
         </h1>
         {!params.has('q') && (
-          <p>
-            Use a caixa de busca no topo da tela para encontrar obras
-            específicas.
-          </p>
+          <>
+            <p>
+              Use a caixa de busca no topo da tela para encontrar obras
+              específicas.
+            </p>
+            <ConicGradientPointer />
+          </>
         )}
         {params.has('q') && loading && (
           <>
