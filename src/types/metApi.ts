@@ -3,7 +3,7 @@ import { departamentSchema } from './departament';
 
 export const metApiAllArtworksIDsSchema = z.object({
   total: z.number(),
-  objectIDs: z.array(z.number()),
+  objectIDs: z.array(z.number()).nullable(),
 });
 
 export type MetApiAllArtworksIDsProps = z.infer<

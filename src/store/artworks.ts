@@ -47,9 +47,10 @@ export const useArtworkStore = create<ArtworksPaginationState>((set, get) => ({
 
       const startIndex = (nextPage - 1) * ARTS_PER_PAGE;
       const endIndex = startIndex + ARTS_PER_PAGE;
-      const artworksIDs = allArtworksIDs
-        .slice(startIndex, endIndex)
-        .map(objectId => objectId.toString());
+      const artworksIDs =
+        allArtworksIDs
+          ?.slice(startIndex, endIndex)
+          .map(objectId => objectId.toString()) || [];
 
       const artworksPromises = artworksIDs.map(getArtworkByID);
       const newArtworks = await Promise.all(artworksPromises).then(results =>
@@ -63,7 +64,7 @@ export const useArtworkStore = create<ArtworksPaginationState>((set, get) => ({
           ? newArtworks
           : [...artworksData, ...newArtworks],
         currentPage: nextPage,
-        hasMore: endIndex < allArtworksIDs.length,
+        hasMore: endIndex < (allArtworksIDs?.length || 0),
       });
     } catch (error) {
       set({ error: `Falha ao carregar obras. ${error}`, hasMore: false });
