@@ -263,21 +263,38 @@ https://github.com/user-attachments/assets/378dafdd-8bee-4f42-b6ae-0e802b40840f
 
 # Aplicação em ação
 
-## Busca de obras de arte
+## Buscar obras de arte
 
-## Carregar novas obras
+https://github.com/user-attachments/assets/2f5f7f54-997d-4d4a-9288-9c9664199402
+
+## Carregar nova página
+
+https://github.com/user-attachments/assets/3f009dc8-836c-4873-a8ee-b55d7e4eb9d5
 
 ## Filtrar por departamento
 
+https://github.com/user-attachments/assets/acc0e941-ff80-43b6-81fc-4248cdcc8ae3
+
 ## Alterar orientação das imagens
+
+https://github.com/user-attachments/assets/8717b830-393e-47b5-908a-5f3d3193e13a
 
 ## Acessar página de obras favoritas vazia
 
-## Favoritas obra e ver na lista de favoritas
+https://github.com/user-attachments/assets/ec3bc260-f57d-4ac7-bf7f-7361b9445fe3
+
+## Favoritar obra e ver na lista de favoritas
+
+https://github.com/user-attachments/assets/15bb6222-1f33-4d3a-b993-ad1d038da6c2
 
 ## Acessar detalhes de uma obra
 
+https://github.com/user-attachments/assets/40667182-c9b4-4857-bdc6-42736ed59d11
+
 ## Exemplo da aplicação em light mode
 
-## Exemplo da aplicação em mobile
 
+
+## Exemplo da aplicação em mobile
+ 
+https://github.com/user-attachments/assets/f75046b2-4465-415a-a63e-c4a337ab2ea9
