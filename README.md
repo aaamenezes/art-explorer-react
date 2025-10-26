@@ -1,4 +1,4 @@
-# Metropolitan Museum of Art
+# Metropolitan Museum of Art 👨‍🎨
 
 [Link da aplicação em produção](https://art-explorer-react-ashy.vercel.app/)
 
@@ -14,7 +14,7 @@ A aplição está responsiva para qualquer tamanho de tela, e também em light m
 
 Ao final desse documento, você pode ver vídeos da aplicação em ação.
 
-# Table of Contents
+# Table of Contents ✏️
 
 - [Metropolitan Museum of Art](#metropolitan-museum-of-art)
 - [Table of Contents](#table-of-contents)
@@ -57,11 +57,9 @@ Ao final desse documento, você pode ver vídeos da aplicação em ação.
   - [Exemplo da aplicação em light mode](#exemplo-da-aplicação-em-light-mode)
   - [Exemplo da aplicação em mobile](#exemplo-da-aplicação-em-mobile)
 
-# Apresentação
+# Como rodar o projeto ▶️
 
-# Como rodar o projeto
-
-## Clone do repositório
+## Clone do repositório ⬇️
 
 Basta executar o comando abaixo no terminal para clonar via HTTP:
 
@@ -75,7 +73,7 @@ Ou via SSH:
 git clone git@github.com:aaamenezes/art-explorer-react.git
 ```
 
-## Gerenciador de pacotes
+## Gerenciador de pacotes 📦
 
 Esse projeto utiliza o [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) como gerenciador de pacotes.
 
@@ -92,7 +90,7 @@ cd art-explorer-react
 npm install
 ```
 
-## Iniciar projeto
+## Iniciar projeto 🚀
 
 Assim como consta nos scripts do `package.json`, basta executar o comando abaixo para iniciar o projeto em ambiente de desenvolvimento:
 
@@ -106,81 +104,81 @@ Acesse seu navegador na seguinte URL:
 
 - [http://localhost:3000](http://localhost:3000)
 
-# Tecnologias utilizadas
+# Tecnologias utilizadas 👨‍💻
 
-## Next.JS
+## Next.JS △
 
 Principal framework para criar as rotas automáticas, renderizar no servidor, lidar com redirect e manipulação de parâmetros de URL, otimizar desempenho e facilitar o deploy.
 
 [Site oficial](https://nextjs.org/)
 
-## React
+## React 🖥️
 
 Biblioteca de front-end para criação dos componente e da interface completa.
 
 [Site oficial](https://react.dev/)
 
-## Typescript
+## Typescript ⌨️
 
 Superset Javascript que adiciona tipagem ao desenvolvimento.
 
 [Site oficial](https://www.typescriptlang.org/)
 
-## Tailwind CSS
+## Tailwind CSS 🎨
 
 Estilização dos componentes.
 
 [Site oficial](https://tailwindcss.com/)
 
-## ZOD
+## ZOD ✅
 
 Valida dados recebidos da API em tempo de execução, evitando erros que passariam despercebidos pelo TypeScript, já que ele valida apenas em tempo de desenvolvimento.
 
 [Site oficial](https://zod.dev/)
 
-## Zustand
+## Zustand 🖼️
 
 Gerenciador de estado global da aplicação. Melhor performance com relação à Context API.
 
 [Site oficial](https://zustand-demo.pmnd.rs/)
 
-## Axios
+## Axios 📨
 
 Biblioteca para requisições à API do Metropolitan Museum of Art. Armazenar URL base comum em todos os requests e receber parâmetros facilmente em formato de objeto.
 
 [Site oficial](https://axios-http.com/ptbr/docs/intro)
 
-## Jest / React Testing Library
+## Jest / React Testing Library 🧪
 
 Criação de testes de unidade e de integração.
 
 [Site oficial](https://jestjs.io/)
 
-## Framer Motion
+## Framer Motion 💫
 
 Biblioteca para fazer animações visuais e melhorar a experiência do usuário.
 
 [Site oficial](https://motion.dev/)
 
-## Lucide React
+## Lucide React 🎈
 
 Biblioteca de ícones para ilustrar respostas e ações na tela. Possui fácil aplicação já que é integrado ao React.
 
 [Site oficial](https://lucide.dev/guide/packages/lucide-react)
 
-## ESLint
+## ESLint 💅
 
 Resolver problemas de Lint.
 
 [Site oficial](https://eslint.org/)
 
-## Prettier
+## Prettier 🔧
 
 Formatar código.
 
 [Site oficial](https://prettier.io/)
 
-# Estrutura de pastas
+# Estrutura de pastas 🏛️
 
 Aqui vou explicar a função das principais pastas do projeto:
 
@@ -252,7 +250,7 @@ Tipagem de informações globais da aplicação. Quando um tipo se referia apena
 - `./src/types/images`
 - `./src/types/metApi`
 
-# Testes
+# Testes 🧪
 
 Foram criados dois testes:
 
@@ -261,7 +259,7 @@ Foram criados dois testes:
 
 https://github.com/user-attachments/assets/378dafdd-8bee-4f42-b6ae-0e802b40840f
 
-# Aplicação em ação
+# Aplicação em ação 🚀
 
 ## Buscar obras de arte
 
@@ -293,8 +291,8 @@ https://github.com/user-attachments/assets/40667182-c9b4-4857-bdc6-42736ed59d11
 
 ## Exemplo da aplicação em light mode
 
-
+https://github.com/user-attachments/assets/d9ac85d1-7492-4a2a-8206-0783ffd06b94
 
 ## Exemplo da aplicação em mobile
- 
-https://github.com/user-attachments/assets/f75046b2-4465-415a-a63e-c4a337ab2ea9
+
+https://github.com/user-attachments/assets/0bd166a6-fbd9-44ae-8e9c-b4bdade2f3e0
