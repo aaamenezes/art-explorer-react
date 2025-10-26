@@ -55,6 +55,14 @@ O motivo foi que foram os dois primeiros sites que lembrei ao pensar em beleza v
 - Finalizar testes
 - Personalizar proporção das imagens
 - Animações com Framer Motion
+- Validações com o ZOD
+
+## Domingo, 26/10, dia 10
+
+- Deploy
+- THOUGHTS.md
+- README.md
+- Escrever e-mail
 
 # Requisições
 
@@ -65,3 +73,7 @@ https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q
 ## Sem resultados
 
 https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=gun&departmentId=8
+
+## Erro de ZOD
+
+http://localhost:3000/?q=bird&departmentId=9
