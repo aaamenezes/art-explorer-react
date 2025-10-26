@@ -81,20 +81,21 @@ export default function Home() {
         <>
           <ImageResizer />
           <Filters />
-          <Grid>
-            {artworksData.map(artwork => {
-              if (!artwork.primaryImageSmall) return null;
-              return (
-                <ArtworkCard key={artwork.objectID} artworkData={artwork} />
-              );
-            })}
-          </Grid>
         </>
+      )}
+
+      {params.has('q') && artworksData.length > 0 && (
+        <Grid>
+          {artworksData.map(artwork => {
+            if (!artwork.primaryImageSmall) return null;
+            return <ArtworkCard key={artwork.objectID} artworkData={artwork} />;
+          })}
+        </Grid>
       )}
 
       {error && <p className="text-red-700 dark:text-red-300">{error}</p>}
 
-      {hasMore && !loading && artworksData.length > 0 && <NextPageButton />}
+      {hasMore && artworksData.length > 0 && <NextPageButton />}
     </Wrapper>
   );
 }
