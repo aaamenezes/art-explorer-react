@@ -41,7 +41,7 @@ export default function ArtWorkCard({ artWorkData }: ArtWorkCardProps) {
             <Image
               src={artWorkData.primaryImageSmall}
               alt={buildArtWorkAltText(artWorkData)}
-              className={`group-hover:scale-120 duration-2000 ${proportionClass} object-cover`}
+              className={`group-hover:scale-120 duration-1000 ${proportionClass} object-cover`}
             />
           </div>
         </Figure>

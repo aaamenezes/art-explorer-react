@@ -60,31 +60,37 @@ export default function Home() {
             específicas.
           </p>
         )}
-        {params.has('q') && artWorksData.length === 0 && !loading && (
+        {params.has('q') && loading && (
+          <>
+            <p>Carregando obras de arte...</p>
+            <AnimatedCube />
+          </>
+        )}
+        {params.has('q') && !loading && artWorksData.length === 0 && (
           <>
             <p>Nenhuma obra encontrada para essa busca.</p>
-            <AnimatedCube />
           </>
         )}
       </div>
 
-      {params.has('q') && artWorksData.length > 0 && (
+      {params.has('q') && !loading && artWorksData.length > 0 && (
         <>
           <ImageResizer />
           <Filters />
+          <Grid>
+            {artWorksData.map(artWork => {
+              if (!artWork.primaryImageSmall) return null;
+              return (
+                <ArtWorkCard key={artWork.objectID} artWorkData={artWork} />
+              );
+            })}
+          </Grid>
         </>
       )}
 
-      <Grid>
-        {artWorksData.map(artWork => {
-          if (!artWork.primaryImageSmall) return null;
-          return <ArtWorkCard key={artWork.objectID} artWorkData={artWork} />;
-        })}
-      </Grid>
-
       {error && <p className="text-red-700 dark:text-red-300">{error}</p>}
 
-      {hasMore && artWorksData.length > 0 && <NextPageButton />}
+      {hasMore && !loading && artWorksData.length > 0 && <NextPageButton />}
     </Wrapper>
   );
 }
