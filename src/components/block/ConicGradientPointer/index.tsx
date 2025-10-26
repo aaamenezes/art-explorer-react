@@ -1,13 +1,14 @@
 'use client';
 
 import { motion, useMotionValue, useTransform } from 'motion/react';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function ConicGradientPointer() {
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
+
   const conicRef = useRef<HTMLDivElement>(null);
 
-  const width = window.innerWidth;
-  const height = window.innerHeight;
   const top = 0;
   const left = 0;
 
@@ -22,6 +23,11 @@ export default function ConicGradientPointer() {
         gradientY.get() * 100
       }% - ${top}px), #0cdcf7, #ff0088, #fff312, #0cdcf7)`
   );
+
+  useEffect(() => {
+    setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
+  }, []);
 
   return (
     <div
