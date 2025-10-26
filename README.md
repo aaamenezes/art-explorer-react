@@ -87,7 +87,7 @@ Assim como consta nos scripts do `package.json`, basta executar o comando abaixo
 npm run dev
 ```
 
-[video npm run dev]
+https://github.com/user-attachments/assets/16415153-25b2-4f61-a7b9-2819773e4301
 
 Acesse seu navegador na seguinte URL:
 
@@ -246,7 +246,7 @@ Foram criados dois testes:
 - Hook `useFavorite()`. Foi testado todos os métodos do hook para pegar favoritos do `window.localStorage`, adicionar novo favorito, remover favorito e verificar se uma obra já está favoritada
 - A função `handleRequestError` que manipula e formata os erros das requisições
 
-[video npm run teste]
+https://github.com/user-attachments/assets/378dafdd-8bee-4f42-b6ae-0e802b40840f
 
 # Aplicação em ação
 
