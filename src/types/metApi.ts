@@ -1,10 +1,17 @@
-import { Departament } from './departament';
+import z from 'zod';
+import { departamentSchema } from './departament';
 
-export interface MetApiAllArtworksIDsResponse {
-  total: number;
-  objectIDs: number[];
-}
+export const metApiAllArtworksIDsSchema = z.object({
+  total: z.number(),
+  objectIDs: z.array(z.number()),
+});
 
-export interface MetApiDepartmentsResponse {
-  departments: Departament[];
-}
+export type MetApiAllArtworksIDsProps = z.infer<
+  typeof metApiAllArtworksIDsSchema
+>;
+
+export const metApiDepartmentsSchema = z.object({
+  departments: z.array(departamentSchema),
+});
+
+export type MetApiDepartmentsProps = z.infer<typeof metApiDepartmentsSchema>;

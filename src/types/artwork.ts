@@ -1,18 +1,21 @@
-import { MetApiAllArtworksIDsResponse } from './metApi';
+import z from 'zod';
+import { MetApiAllArtworksIDsProps } from './metApi';
 
-export interface ArtworkProps {
-  objectID: number;
-  title: string;
-  primaryImage: string;
-  primaryImageSmall: string;
-  artistDisplayName: string;
-  artistDisplayBio: string;
-  culture: string;
-  objectDate: string;
-  medium: string;
-  department: string;
-  objectURL: string;
-}
+export const artworkSchema = z.object({
+  objectID: z.number(),
+  title: z.string(),
+  primaryImage: z.string(),
+  primaryImageSmall: z.string(),
+  artistDisplayName: z.string(),
+  artistDisplayBio: z.string(),
+  culture: z.string(),
+  objectDate: z.string(),
+  medium: z.string(),
+  department: z.string(),
+  objectURL: z.string(),
+});
+
+export type ArtworkProps = z.infer<typeof artworkSchema>;
 
 interface LoadAllArtworksIDsFromApiProps {
   keywordSearch: string;
@@ -21,7 +24,7 @@ interface LoadAllArtworksIDsFromApiProps {
 }
 
 export interface ArtworksPaginationState {
-  allArtworksIDs: MetApiAllArtworksIDsResponse['objectIDs'];
+  allArtworksIDs: MetApiAllArtworksIDsProps['objectIDs'];
   artworksData: ArtworkProps[];
   currentPage: number;
   loading: boolean;
