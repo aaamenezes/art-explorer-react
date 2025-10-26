@@ -12,15 +12,6 @@ export default function AnimatedCube() {
     cubeRef.current.style.transform = `translateY(${y}px) rotateX(${rotate}deg) rotateY(${rotate}deg)`;
   });
 
-  const cubeSidesMap = [
-    { bg: '#ff008844', transform: 'rotateY(0deg)_translateZ(100px)' },
-    { bg: '#8ac0ff44', transform: 'rotateY(-90deg)_translateZ(100px)' },
-    { bg: '#dd00ee44', transform: 'rotateY(90deg)_translateZ(100px)' },
-    { bg: '#0cdcf744', transform: 'rotateX(90deg)_translateZ(100px)' },
-    { bg: '#8df0cc44', transform: 'rotateX(-90deg)_translateZ(100px)' },
-    { bg: '#9911ff44', transform: 'rotateY(180deg)_translateZ(100px)' },
-  ];
-
   const sideClassName = 'absolute w-full h-full opacity-60';
 
   return (
@@ -29,12 +20,24 @@ export default function AnimatedCube() {
       aria-hidden="true"
     >
       <div className="w-50 h-50 relative transform-3d" ref={cubeRef}>
-        {cubeSidesMap.map(({ bg, transform }, index) => (
-          <div
-            key={index}
-            className={`${sideClassName} bg-[${bg}] [transform:${transform}]`}
-          />
-        ))}
+        <div
+          className={`${sideClassName} bg-[#ff008844] [transform:rotateY(0deg)_translateZ(100px)]`}
+        ></div>
+        <div
+          className={`${sideClassName} bg-[#dd00ee44] [transform:rotateY(90deg)_translateZ(100px)]`}
+        ></div>
+        <div
+          className={`${sideClassName} bg-[#9911ff44] [transform:rotateY(180deg)_translateZ(100px)]`}
+        ></div>
+        <div
+          className={`${sideClassName} bg-[#8ac0ff44] [transform:rotateY(-90deg)_translateZ(100px)]`}
+        ></div>
+        <div
+          className={`${sideClassName} bg-[#0cdcf744] [transform:rotateX(90deg)_translateZ(100px)]`}
+        ></div>
+        <div
+          className={`${sideClassName} bg-[#8df0cc44] [transform:rotateX(-90deg)_translateZ(100px)]`}
+        ></div>
       </div>
     </div>
   );
