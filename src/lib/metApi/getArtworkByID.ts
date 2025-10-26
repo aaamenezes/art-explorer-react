@@ -1,6 +1,6 @@
 import { handleRequestError } from '@/lib/handleRequestError';
 import { ArtworkProps, artworkSchema } from '@/types/artwork';
-import { requester } from '..';
+import { requester } from '.';
 
 export async function getArtworkByID(objectID: string) {
   try {

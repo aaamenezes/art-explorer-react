@@ -28,18 +28,18 @@ export default function ErrorIllustration() {
         ry="4"
         fill="#fffefb"
         stroke="#e6e0d6"
-        stroke-width="1"
+        strokeWidth="1"
       />
 
       <g transform="translate(60,60)">
         <defs>
           <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0%" stop-color="#ffd8a8" />
-            <stop offset="100%" stop-color="#ffc09f" />
+            <stop offset="0%" stopColor="#ffd8a8" />
+            <stop offset="100%" stopColor="#ffc09f" />
           </linearGradient>
           <linearGradient id="g2" x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0%" stop-color="#bde0fe" />
-            <stop offset="100%" stop-color="#a0c4ff" />
+            <stop offset="0%" stopColor="#bde0fe" />
+            <stop offset="100%" stopColor="#a0c4ff" />
           </linearGradient>
         </defs>
 
@@ -48,8 +48,8 @@ export default function ErrorIllustration() {
         <path
           d="M40 180 C 110 120, 180 200, 260 150"
           stroke="#7c5c4a"
-          stroke-width="10"
-          stroke-linecap="round"
+          strokeWidth="10"
+          strokeLinecap="round"
           fill="none"
           opacity="0.25"
         />
@@ -62,33 +62,33 @@ export default function ErrorIllustration() {
                L196 170 L210 186"
             fill="none"
             stroke="#3b2f2f"
-            stroke-width="4"
-            stroke-linejoin="miter"
-            stroke-linecap="butt"
+            strokeWidth="4"
+            strokeLinejoin="miter"
+            strokeLinecap="butt"
             opacity="0.95"
           />
           <path
             d="M140 52 L154 60"
             stroke="#3b2f2f"
-            stroke-width="2"
+            strokeWidth="2"
             opacity="0.7"
           />
           <path
             d="M128 68 L116 58"
             stroke="#3b2f2f"
-            stroke-width="2"
+            strokeWidth="2"
             opacity="0.6"
           />
           <path
             d="M126 150 L100 144"
             stroke="#3b2f2f"
-            stroke-width="2"
+            strokeWidth="2"
             opacity="0.6"
           />
           <path
             d="M168 170 L184 156"
             stroke="#3b2f2f"
-            stroke-width="2"
+            strokeWidth="2"
             opacity="0.6"
           />
         </g>
@@ -108,7 +108,7 @@ export default function ErrorIllustration() {
         ry="6"
         fill="none"
         stroke="#e0dcd5"
-        stroke-width="1"
+        strokeWidth="1"
       />
     </svg>
   );

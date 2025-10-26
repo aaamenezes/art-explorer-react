@@ -1,5 +1,5 @@
 export interface ArtworkPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }

@@ -1,11 +1,11 @@
 import Image from '@/components/base/Image';
 import Link from '@/components/base/Link';
+import ErrorIllustration from '@/components/block/ErrorIllustration';
 import Wrapper from '@/components/container/Wrapper';
 import { buildArtworkAltText } from '@/lib/buildArtworkAltText';
 import { getArtworkByID } from '@/lib/metApi';
 import { ExternalLink } from 'lucide-react';
 import { ArtworkPageProps } from './types';
-import ErrorIllustration from '@/components/block/ErrorIllustration';
 
 export default async function Artwork({ params }: ArtworkPageProps) {
   const { id } = await params;

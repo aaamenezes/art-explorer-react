@@ -3,7 +3,7 @@ import {
   MetApiAllArtworksIDsProps,
   metApiAllArtworksIDsSchema,
 } from '@/types/metApi';
-import { requester } from '..';
+import { requester } from '.';
 import { AllArtworksIDsProps } from './types';
 
 export async function getAllArtworksIDs({

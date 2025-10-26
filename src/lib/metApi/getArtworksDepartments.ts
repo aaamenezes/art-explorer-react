@@ -3,7 +3,7 @@ import {
   MetApiDepartmentsProps,
   metApiDepartmentsSchema,
 } from '@/types/metApi';
-import { requester } from '..';
+import { requester } from '.';
 
 export async function getArtworksDepartments() {
   try {

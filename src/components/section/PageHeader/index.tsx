@@ -5,7 +5,7 @@ import Logo from '@/components/base/Logo';
 import Search from '@/components/block/Search';
 import { useArtworkStore } from '@/store/artworks';
 import { Star } from 'lucide-react';
-import { useCallback } from 'react';
+import { Suspense, useCallback } from 'react';
 
 export default function PageHeader() {
   const { reset } = useArtworkStore();
@@ -26,7 +26,9 @@ export default function PageHeader() {
         <Star />
         Favoritos
       </Link>
-      <Search className="col-span-2 order-3 md:order-2" />
+      <Suspense fallback={<p>Carregando...</p>}>
+        <Search className="col-span-2 order-3 md:order-2" />
+      </Suspense>
     </header>
   );
 }

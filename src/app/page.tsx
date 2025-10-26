@@ -1,54 +1,14 @@
-'use client';
-
-import AnimatedCube from '@/components/block/AnimatedCube';
-import ArtworkCard from '@/components/block/ArtworkCard';
-import ConicGradientPointer from '@/components/block/ConicGradientPointer';
-import ErrorIllustration from '@/components/block/ErrorIllustration';
-import NextPageButton from '@/components/block/NextPageButton';
-import Grid from '@/components/container/Grid';
 import Wrapper from '@/components/container/Wrapper';
-import Filters from '@/components/section/Filters';
-import ImageResizer from '@/components/section/ImageResizer/inde';
-import { useArtworkStore } from '@/store/artworks';
-import { useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+import HomeTemplate from '@/components/template/Home';
+import { ParsedUrlQuery } from 'querystring';
+import { Suspense } from 'react';
 
-export default function Home() {
-  const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams.toString());
+interface HomePageProps {
+  searchParams?: Promise<Record<string, ParsedUrlQuery['slug']>>;
+}
 
-  const {
-    error,
-    hasMore,
-    artworksData,
-    loading,
-    loadAllArtworksIDsFromApi,
-    loadArtworksByPage,
-  } = useArtworkStore();
-
-  useEffect(() => {
-    if (params.has('q')) {
-      if (artworksData.length > 0) return;
-
-      const keywordSearch = params.get('q') || '';
-      const departmentId = params.get('departmentId') || undefined;
-      const artistOrCultureParam = params.get('artistOrCulture');
-      const artistOrCulture =
-        artistOrCultureParam === 'true'
-          ? true
-          : artistOrCultureParam === 'false'
-          ? false
-          : undefined;
-
-      loadAllArtworksIDsFromApi({
-        keywordSearch,
-        departmentId: departmentId ? parseInt(departmentId, 10) : undefined,
-        artistOrCulture,
-      }).then(() => {
-        loadArtworksByPage(1);
-      });
-    }
-  }, []);
+export default async function Home({ searchParams }: HomePageProps) {
+  const params = await searchParams;
 
   return (
     <Wrapper as="main">
@@ -56,50 +16,10 @@ export default function Home() {
         <h1 className="text-3xl font-bold mb-4">
           Veja as obras do Metropolitan Museum of Art
         </h1>
-        {!params.has('q') && (
-          <>
-            <p>
-              Use a caixa de busca no topo da tela para encontrar obras
-              específicas.
-            </p>
-            <ConicGradientPointer />
-          </>
-        )}
-        {params.has('q') && loading && (
-          <>
-            <p>Carregando obras de arte...</p>
-            <AnimatedCube />
-          </>
-        )}
-        {params.has('q') && !loading && artworksData.length === 0 && (
-          <>
-            <p>Nenhuma obra encontrada para essa busca. Tente novamente.</p>
-            <div className="flex justify-center">
-              <ErrorIllustration />
-            </div>
-          </>
-        )}
       </div>
-
-      {params.has('q') && !loading && artworksData.length > 0 && (
-        <>
-          <ImageResizer />
-          <Filters />
-        </>
-      )}
-
-      {params.has('q') && artworksData.length > 0 && (
-        <Grid>
-          {artworksData.map(artwork => {
-            if (!artwork.primaryImageSmall) return null;
-            return <ArtworkCard key={artwork.objectID} artworkData={artwork} />;
-          })}
-        </Grid>
-      )}
-
-      {error && <p className="text-red-700 dark:text-red-300">{error}</p>}
-
-      {hasMore && artworksData.length > 0 && <NextPageButton />}
+      <Suspense fallback={<p>Carregando...</p>}>
+        <HomeTemplate searchParams={params} />
+      </Suspense>
     </Wrapper>
   );
 }

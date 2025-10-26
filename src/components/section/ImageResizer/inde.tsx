@@ -2,7 +2,7 @@
 
 import Button from '@/components/base/Button';
 import { useImagesStore } from '@/store/images';
-import { Square, RectangleVertical, RectangleHorizontal } from 'lucide-react';
+import { RectangleHorizontal, RectangleVertical, Square } from 'lucide-react';
 
 export default function ImageResizer() {
   const { setProportionClass } = useImagesStore();
